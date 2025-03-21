@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/ClubCedille/k8s-cedille-prod
     path: apps/calidum-rotae/prod
-    targetRevision: HEAD 
+    targetRevision: HEAD
   syncPolicy:
     syncOptions:
     - CreateNamespace=true

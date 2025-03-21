@@ -3,7 +3,7 @@ kind: Kustomization
 
   # System
   # - ../../system/vcluster/
-  #- ../../system/pixie/
+  # - ../../system/pixie/
   # Workload
 resources:
 - ../../system/netdata/
