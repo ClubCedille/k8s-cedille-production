@@ -39,4 +39,3 @@ spec:
                 secretKeyRef:
                   name: calidum-rotae-secrets
                   key: EMAIL_SENDGRID_API_KEY
-
