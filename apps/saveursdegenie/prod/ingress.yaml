@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: saveursdegenie
+  namespace: saveursdegenie
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/tls-acme: "true"
+spec:
+  ingressClassName: contour
+  tls:
+    - hosts:
+        - saveursdegenie.prod.cedille.club
+      secretName: saveursdegenie-cert-traefik-tls
+  rules:
+    - host: saveursdegenie.prod.cedille.club
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: saveursdegenie-service
+                port:
+                  name: http
