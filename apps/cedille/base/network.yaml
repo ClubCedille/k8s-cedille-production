@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cedille-service
+  namespace: cedille
+spec:
+  ports:
+    - name: http
+      targetPort: 80
+      protocol: TCP
+      port: 80
+  type: ClusterIP
+  selector:
+    app: cedille-service
