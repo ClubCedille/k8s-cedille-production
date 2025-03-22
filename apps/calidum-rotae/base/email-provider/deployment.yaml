@@ -29,10 +29,10 @@ spec:
             # ['/bin/sh', '-c', 'source /vault/secrets/email-provider-env && /email_provider --port 4000']
             ['/bin/sh', '-c', '/email_provider --port 4000']
           ports:
-          - containerPort: 4000
+            - containerPort: 4000
           envFrom:
-          - configMapRef:
-              name: email-provider-env
+            - configMapRef:
+                name: email-provider-env
           env:
             - name: EMAIL_SENDGRID_API_KEY
               valueFrom:
