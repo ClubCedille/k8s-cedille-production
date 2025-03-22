@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: saveurdegenie
+  name: saveursdegenie
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "2"
@@ -9,7 +9,7 @@ spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: saveurdegenie
+    namespace: saveursdegenie
   source:
     repoURL: https://github.com/ClubCedille/k8s-cedille-prod
     path: apps/saveursdegenie/prod
