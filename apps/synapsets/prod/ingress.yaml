@@ -14,13 +14,13 @@ spec:
         - synapsets.prod.cedille.club
       secretName: synapsets-cert-traefik-tls
   rules:
-  - host: synapsets.prod.cedille.club
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: synapsets-service
-            port:
-              name: http
+    - host: synapsets.prod.cedille.club
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: synapsets-service
+                port:
+                  name: http
