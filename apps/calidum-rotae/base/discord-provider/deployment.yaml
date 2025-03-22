@@ -22,17 +22,17 @@ spec:
         #   {{- end }}
     spec:
       containers:
-      - name: discord-provider
-        image: ghcr.io/clubcedille/discord-provider:1.0.0
-        imagePullPolicy: Always
-        command:
-          # ['/bin/sh', '-c', 'source /vault/secrets/discord-provider-env && /discord_provider --port 5000']
-          ['/bin/sh', '-c', '/discord_provider --port 5000']
-        ports:
-        - containerPort: 5000
-        env:
-          - name: DISCORD_WEBHOOK_URL
-            valueFrom:
-              secretKeyRef:
-                name: calidum-rotae-secrets
-                key: DISCORD_WEBHOOK_URL
+        - name: discord-provider
+          image: ghcr.io/clubcedille/discord-provider:1.0.0
+          imagePullPolicy: Always
+          command:
+            # ['/bin/sh', '-c', 'source /vault/secrets/discord-provider-env && /discord_provider --port 5000']
+            ['/bin/sh', '-c', '/discord_provider --port 5000']
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DISCORD_WEBHOOK_URL
+              valueFrom:
+                secretKeyRef:
+                  name: calidum-rotae-secrets
+                  key: DISCORD_WEBHOOK_URL
