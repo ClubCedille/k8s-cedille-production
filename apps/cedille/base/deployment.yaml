@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: cedille-service
-          image: clubcedille/cedille.etsmtl.ca
+          image: clubcedille/cedille.etsmtl.ca:latest
           imagePullPolicy: Always
           resources: {}
           ports:
