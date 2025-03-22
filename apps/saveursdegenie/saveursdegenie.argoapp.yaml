@@ -12,7 +12,7 @@ spec:
     namespace: saveurdegenie
   source:
     repoURL: https://github.com/ClubCedille/k8s-cedille-prod
-    path: apps/saveurdegenie/prod
+    path: apps/saveursdegenie/prod
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
