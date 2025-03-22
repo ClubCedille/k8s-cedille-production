@@ -8,18 +8,19 @@ metadata:
     ingress.kubernetes.io/force-ssl-redirect: "true"
     kubernetes.io/tls-acme: "true"
 spec:
+  ingressClassName: contour
   tls:
     - hosts:
         - cedille.prod.cedille.club
       secretName: cedille-cert-traefik-tls
   rules:
-  - host: cedille.prod.cedille.club
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: cedille-web
-            port:
-              name: http
+    - host: cedille.prod.cedille.club
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: cedille-service
+                port:
+                  name: http

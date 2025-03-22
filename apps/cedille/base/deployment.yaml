@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cedille-web
+  name: cedille-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cedille
+      app: cedille-service
   template:
     metadata:
       labels:
-        app: cedille
+        app: cedille-service
     spec:
       containers:
-        - name: cedille-web
+        - name: cedille-service
           image: clubcedille/cedille.etsmtl.ca
           imagePullPolicy: Always
           resources: {}
