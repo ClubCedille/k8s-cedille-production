@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cedille-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+        app: cedille
+  template:
+    spec:
+      containers:
+        - name: cedille-web
+          image: clubcedille/cedille.etsmtl.ca
+          imagePullPolicy: Always
+          resources: {}
+          ports:
+          - containerPort: 80

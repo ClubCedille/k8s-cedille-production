@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cedille
+  namespace: cedille
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    cert-manager.io/cluster-issuer: "letsencrypt-traefik-prod"
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+    - hosts:
+        - cedille.etsmtl.ca
+      secretName: cedille-cert-traefik-tls
+  rules:
+  - host: cedille.etsmtl.ca
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: cedille-web
+            port:
+              name: http
