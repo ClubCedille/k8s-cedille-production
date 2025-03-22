@@ -23,7 +23,8 @@ spec:
     spec:
       containers:
       - name: email-provider
-        image: ghcr.io/clubcedille/email-provider:1.0.0
+        image: ghcr.io/clubcedille/email-provider:latest
+        imagePullPolicy: Always
         command:
           # ['/bin/sh', '-c', 'source /vault/secrets/email-provider-env && /email_provider --port 4000']
           ['/bin/sh', '-c', '/email_provider --port 4000']
