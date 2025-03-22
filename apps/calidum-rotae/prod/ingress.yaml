@@ -19,8 +19,8 @@ spec:
         paths:
           - pathType: Prefix
             path: /
-        backend:
-          service:
-            name: calidum-rotae-service
-            port:
-              number: 3000
+            backend:
+              service:
+                name: calidum-rotae-service
+                port:
+                  number: 3000
