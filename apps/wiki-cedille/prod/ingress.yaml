@@ -1,8 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: calidum-rotae-ingress
-  namespace: calidum-rotae
+  name: wiki-cedille-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -10,17 +9,17 @@ metadata:
 spec:
   ingressClassName: contour
   tls:
-    - secretName: calidum-rotae-service-tls
+    - secretName: wiki-tls
       hosts:
-        - calidum-rotae.prod.cedille.club
+        - wiki.cedille.club
   rules:
-    - host: calidum-rotae.prod.cedille.club
+    - host: wiki.cedille.club
       http:
         paths:
           - pathType: Prefix
             path: /
             backend:
               service:
-                name: calidum-rotae-service
+                name: wiki-cedille
                 port:
-                  number: 3000
+                  name: http
