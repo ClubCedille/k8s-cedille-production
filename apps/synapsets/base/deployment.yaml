@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-        app: synapsets-service
+      app: synapsets-service
   template:
     metadata:
       labels:
