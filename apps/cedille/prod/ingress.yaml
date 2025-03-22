@@ -4,16 +4,16 @@ metadata:
   name: cedille
   namespace: cedille
   annotations:
-    kubernetes.io/ingress.class: "traefik"
-    cert-manager.io/cluster-issuer: "letsencrypt-traefik-prod"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    ingress.kubernetes.io/force-ssl-redirect: "true"
     kubernetes.io/tls-acme: "true"
 spec:
   tls:
     - hosts:
-        - cedille.etsmtl.ca
+        - cedille.prod.cedille.club
       secretName: cedille-cert-traefik-tls
   rules:
-  - host: cedille.etsmtl.ca
+  - host: cedille.prod.cedille.club
     http:
       paths:
       - path: /

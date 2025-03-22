@@ -6,8 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-        app: cedille
+      app: cedille
   template:
+    metadata:
+      labels:
+        app: cedille
     spec:
       containers:
         - name: cedille-web
@@ -15,4 +18,4 @@ spec:
           imagePullPolicy: Always
           resources: {}
           ports:
-          - containerPort: 80
+            - containerPort: 80
