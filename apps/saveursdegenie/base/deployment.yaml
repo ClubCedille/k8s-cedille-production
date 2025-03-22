@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: saveursdegenie-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: saveursdegenie-service
+  template:
+    metadata:
+      labels:
+        app: saveursdegenie-service
+    spec:
+      containers:
+        - name: saveursdegenie-web
+          image: clubcedille/saveursdegenie.etsmtl.ca
+          imagePullPolicy: Always
+          resources: {}
+          ports:
+            - containerPort: 80
