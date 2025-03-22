@@ -10,15 +10,15 @@ metadata:
 spec:
   ingressClassName: contour
   tls:
-  - secretName: calidum-rotae-service-tls
-    hosts:
-    - calidum-rotae.prod.cedille.club
+    - secretName: calidum-rotae-service-tls
+      hosts:
+        - calidum-rotae.prod.cedille.club
   rules:
-  - host: calidum-rotae.prod.cedille.club
-    http:
-      paths:
-      - pathType: Prefix
-        path: /
+    - host: calidum-rotae.prod.cedille.club
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
         backend:
           service:
             name: calidum-rotae-service
