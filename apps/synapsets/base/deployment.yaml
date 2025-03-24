@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: synapsets-service
+  name: synapsets-web
+  namespace: synapsets
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: synapsets-service
+      app: synapsets-web
   template:
     metadata:
       labels:
-        app: synapsets-service
+        app: synapsets-web
     spec:
       containers:
-        - name: synapsets-service
+        - name: synapsets-web
           image: clubcedille/synapsets.etsmtl.ca
           imagePullPolicy: Always
           resources: {}

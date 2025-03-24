@@ -12,7 +12,7 @@ spec:
   tls:
     - hosts:
         - synapsets.prod.cedille.club
-      secretName: synapsets-cert-traefik-tls
+      secretName: synapsets-tls
   rules:
     - host: synapsets.prod.cedille.club
       http:
