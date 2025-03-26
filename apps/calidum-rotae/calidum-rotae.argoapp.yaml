@@ -8,10 +8,10 @@ metadata:
 spec:
   project: default
   destination:
-    server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-prod
+    server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-production
     namespace: calidum-rotae
   source:
-    repoURL: https://github.com/ClubCedille/k8s-cedille-prod
+    repoURL: https://github.com/ClubCedille/k8s-cedille-production
     path: apps/calidum-rotae/prod
     targetRevision: HEAD
   syncPolicy:
