@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: discord-provider
-          image: ghcr.io/clubcedille/discord-provider:1.0.1
+          image: ghcr.io/clubcedille/discord-provider:1.0.2
           imagePullPolicy: Always
           command:
             # ['/bin/sh', '-c', 'source /vault/secrets/discord-provider-env && /discord_provider --port 5000']
