@@ -39,3 +39,13 @@ spec:
                 secretKeyRef:
                   name: calidum-rotae-secrets
                   key: EMAIL_SMTP_API_KEY
+            - name: EMAIL_FROM_ADDRESS
+              value: noreply@cedille.club
+            - name: EMAIL_FROM_NAME
+              value: cedille
+            - name: EMAIL_NAME_TO
+              value: cedille
+            - name: EMAIL_TO_ADDRESS
+              value: cedille@etsmtl.net
+            - name: EMAIL_SUBJECT
+              value: Submission
