@@ -1,20 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cedille-service
+  name: synapsets-web
+  namespace: synapsets
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cedille-service
+      app: synapsets-web
   template:
     metadata:
       labels:
-        app: cedille-service
+        app: synapsets-web
     spec:
       containers:
-        - name: cedille-service
-          image: ghcr.io/clubcedille/cedille.etsmtl.ca:latest
+        - name: synapsets-web
+          image: clubcedille/synapsets.etsmtl.ca
           imagePullPolicy: Always
           resources: {}
           ports:
