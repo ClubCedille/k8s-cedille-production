@@ -107,7 +107,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mongo-pvc
 spec:
-  storageClassName: local-hostpath
+  storageClassName: cephfs
   accessModes:
     - "ReadWriteOnce"
   resources:
