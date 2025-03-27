@@ -46,5 +46,5 @@ spec:
           ports:
             - containerPort: 3000
           command:
-            # ['/bin/sh', '-c', 'source /vault/secrets/calidum-rotae-service-env && /calidum_rotae_service --port 3000 --discord_provider_hostname discord-provider-service --discord_provider_port 5000 --email_provider_hostname email-provider-service --email_provider_port 4000 --otel_otlp_exporter_host opentelemetry-collector-collector-headless.opentelemetry-collector.svc.cluster.local  --otel_otlp_exporter_port 4318 --allowed_domains "https://*.cedille.club,https://*.etsmtl.ca"']
-            ['/bin/sh', '-c', '/calidum_rotae_service --port 3000 --discord_provider_hostname discord-provider-service --discord_provider_port 5000 --email_provider_hostname email-provider-service --email_provider_port 4000 --otel_otlp_exporter_host coroot.coroot.svc.cluster.local  --otel_otlp_exporter_port 8080 --allowed_domains "http://locahost,http://localhost:3000,https://*.cedille.club,https://*.etsmtl.ca"']
+            # 'source /vault/secrets/calidum-rotae-service-env && 
+            ['/bin/sh', '-c', '/calidum_rotae_service --port 3000 --discord_provider_hostname discord-provider-service --discord_provider_port 5000 --email_provider_hostname email-provider-service --email_provider_port 4000 --otel_otlp_exporter_host k8s-cedille-production-coroot-ce-coroot.coroot.svc.cluster.local:8080 --otel_otlp_exporter_port 8080 --allowed_domains "http://locahost,http://localhost:3000,https://*.cedille.club,https://*.etsmtl.ca"']
