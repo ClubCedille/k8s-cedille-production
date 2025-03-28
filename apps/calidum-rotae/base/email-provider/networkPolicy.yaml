@@ -12,19 +12,19 @@ spec:
     - Egress
   egress:
     - to:
-      - ipBlock:
+        - ipBlock:
           cidr: 10.96.0.10/32
       ports:
         - protocol: UDP
       port: 53
     - to:
-      - ipBlock:
+        - ipBlock:
           cidr: 0.0.0.0/0
       ports:
         - protocol: TCP
       port: 443
     - to:
-      - ipBlock:
-        cidr: 0.0.0.0/0
+        - ipBlock:
+          cidr: 0.0.0.0/0
       ports:
         - protocol: ICMP
