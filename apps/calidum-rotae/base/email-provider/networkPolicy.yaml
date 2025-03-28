@@ -9,25 +9,22 @@ spec:
     matchLabels:
       app: email-provider
   policyTypes:
-  - Egress
+    - Egress
   egress:
-  # Allow DNS
-  - to:
-    - ipBlock:
-        cidr: 10.96.0.10/32  # CoreDNS IP
-    ports:
-    - protocol: UDP
+    - to:
+      - ipBlock:
+          cidr: 10.96.0.10/32
+      ports:
+        - protocol: UDP
       port: 53
-  # Allow all outbound HTTPS
-  - to:
-    - ipBlock:
-        cidr: 0.0.0.0/0
-    ports:
-    - protocol: TCP
+    - to:
+      - ipBlock:
+          cidr: 0.0.0.0/0
+      ports:
+        - protocol: TCP
       port: 443
-  # Allow ICMP (ping) for debugging
-  - to:
-    - ipBlock:
+    - to:
+      - ipBlock:
         cidr: 0.0.0.0/0
-    ports:
-    - protocol: ICMP
+      ports:
+        - protocol: ICMP
