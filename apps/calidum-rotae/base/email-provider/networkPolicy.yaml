@@ -1,0 +1,33 @@
+# email-provider-egress.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-email-provider-egress
+  namespace: calidum-rotae
+spec:
+  podSelector:
+    matchLabels:
+      app: email-provider
+  policyTypes:
+  - Egress
+  egress:
+  # Allow DNS
+  - to:
+    - ipBlock:
+        cidr: 10.96.0.10/32  # CoreDNS IP
+    ports:
+    - protocol: UDP
+      port: 53
+  # Allow all outbound HTTPS
+  - to:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+    ports:
+    - protocol: TCP
+      port: 443
+  # Allow ICMP (ping) for debugging
+  - to:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+    ports:
+    - protocol: ICMP
