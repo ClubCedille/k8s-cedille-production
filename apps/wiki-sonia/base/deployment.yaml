@@ -29,21 +29,28 @@ spec:
             cpu: 200m
             memory: 256Mi
         env:
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: wikijs-secrets
-              key: DB_USER
-        - name: POSTGRES_PASSWORD
+        - name: DB_TYPE
+          value: "postgres"
+        - name: DB_USER
+          value: "wiki"
+        - name: DB_PASS
           valueFrom:
             secretKeyRef:
               name: wikijs-secrets
               key: DB_PASS
-        - name: POSTGRES_DB
-          valueFrom:
-            secretKeyRef:
-              name: wikijs-secrets
-              key: DB_NAME
+        - name: DB_NAME
+          value: "wiki_sonia"
+        - name: DB_HOST
+          value: "postgres.wiki-sonia.svc.cluster.local"
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_POOL_MIN
+          value: "0"
+        - name: DB_POOL_MAX
+          value: "5"
+        - name: DB_SSL
+          value: "false"
+          
         livenessProbe:
           httpGet:
             path: /
@@ -57,40 +64,3 @@ spec:
             port: 3000
           initialDelaySeconds: 120
           periodSeconds: 3
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: postgres
-  namespace: wiki-sonia
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: postgres
-  template:
-    metadata:
-      labels:
-        app: postgres
-    spec:
-      containers:
-      - name: postgres
-        image: postgres:13
-        env:
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: wikijs-secrets
-              key: DB_USER
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: wikijs-secrets
-              key: DB_PASS
-        - name: POSTGRES_DB
-          valueFrom:
-            secretKeyRef:
-              name: wikijs-secrets
-              key: DB_NAME
-        ports:
-        - containerPort: 5432

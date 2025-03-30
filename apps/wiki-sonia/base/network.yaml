@@ -10,7 +10,7 @@ spec:
     targetPort: 3000
   type: ClusterIP
   selector:
-    app: wiki-sonia
+    app: wikijs
 ---
 apiVersion: v1
 kind: Service
@@ -18,8 +18,10 @@ metadata:
   name: postgres
   namespace: wiki-sonia
 spec:
-  clusterIP: None
   ports:
-    - port: 5432
+  - name: postgres
+    port: 5432
+    targetPort: 5432
+  type: ClusterIP
   selector:
     app: postgres
