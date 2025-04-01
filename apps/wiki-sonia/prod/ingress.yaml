@@ -4,7 +4,7 @@ metadata:
   name: wikijs
   namespace: sonia
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-staging
+    cert-manager.io/cluster-issuer: letsencrypt-prod
     ingress.kubernetes.io/force-ssl-redirect: "true"
     kubernetes.io/tls-acme: "true"
 spec:
@@ -21,6 +21,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: wikijs
+                name: wiki
                 port:
-                  number: 3000
+                  name: http
