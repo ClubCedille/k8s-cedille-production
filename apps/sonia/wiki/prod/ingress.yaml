@@ -1,8 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: wikijs-ingress
-  namespace: capra
+  name: wikijs
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -10,11 +9,11 @@ metadata:
 spec:
   ingressClassName: contour
   tls:
-    - secretName: capra-wikijs-tls
+    - secretName: wikijs-cert-tls
       hosts:
-        - wiki.capra.prod.cedille.club
+        - wiki.sonia.prod.cedille.club
   rules:
-    - host: wiki.capra.prod.cedille.club
+    - host: wiki.sonia.prod.cedille.club
       http:
         paths:
           - path: /
