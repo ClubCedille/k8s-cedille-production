@@ -10,9 +10,9 @@ metadata:
 spec:
   ingressClassName: contour
   tls:
-    - hosts:
-      - wiki.sonia.prod.cedille.club
-      secretName: wikijs-cert-tls
+    - secretName: wikijs-cert-tls
+      hosts:
+        - wiki.sonia.prod.cedille.club
   rules:
     - host: wiki.sonia.prod.cedille.club
       http:

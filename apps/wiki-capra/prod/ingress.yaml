@@ -10,9 +10,9 @@ metadata:
 spec:
   ingressClassName: contour
   tls:
-    - hosts:
+    - secretName: capra-wikijs-tls
+      hosts:
         - wiki.capra.prod.cedille.club
-      secretName: capra-wikijs-tls
   rules:
     - host: wiki.capra.prod.cedille.club
       http:
