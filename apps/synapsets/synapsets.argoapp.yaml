@@ -11,7 +11,7 @@ spec:
     server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-production
     namespace: synapsets
   source:
-    repoURL: https://github.com/ClubSynapsets/k8s-cedille-prod
+    repoURL: https://github.com/ClubCedille/k8s-cedille-prod
     path: apps/synapsets/prod
     targetRevision: HEAD
   syncPolicy:
