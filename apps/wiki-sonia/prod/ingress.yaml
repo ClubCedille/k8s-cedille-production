@@ -10,17 +10,17 @@ metadata:
 spec:
   ingressClassName: contour
   tls:
-  - hosts:
-    - wiki.sonia.prod.cedille.club
-    secretName: wikijs-cert-tls
+    - hosts:
+      - wiki.sonia.prod.cedille.club
+      secretName: wikijs-cert-tls
   rules:
-  - host: wiki.sonia.prod.cedille.club
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: wikijs
-            port:
-              number: 3000
+    - host: wiki.sonia.prod.cedille.club
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: wikijs
+                port:
+                  number: 3000
