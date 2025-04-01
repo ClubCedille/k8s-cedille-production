@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: wikijs
-  namespace: wiki-sonia
+  namespace: sonia
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-staging
     ingress.kubernetes.io/force-ssl-redirect: "true"
