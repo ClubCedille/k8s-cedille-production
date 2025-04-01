@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: synapsets
+  name: capra
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "2"
@@ -9,10 +9,10 @@ spec:
   project: default
   destination:
     server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-production
-    namespace: synapsets
+    namespace: capra-wikijs
   source:
     repoURL: https://github.com/ClubCedille/k8s-cedille-production
-    path: apps/synapsets/prod
+    path: apps/capra/wiki/prod
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
