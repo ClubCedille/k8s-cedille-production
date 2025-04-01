@@ -5,22 +5,22 @@ resources:
   - secret.yaml
 
 helmCharts:
-- name: wiki
-  releaseName: wiki
-  version: 2.2.17
-  repo: https://charts.js.wiki
-  namespace: sonia
-  valuesInline:
-    image.tag: 2.5
-    resources.limits:
-      cpu: 200m
-      memory: 256Mi
-    ingress.enabled: false
-    postgresql:
-      existingSecret: wikijs-postgres-secret
-      persistence:
-        enabled: true
-        size: 10Gi
-        storageClass: cephfs
-    startupProbe:
-      initialDelaySeconds: 120
+  - name: wiki
+    releaseName: wiki
+    version: 2.2.17
+    repo: https://charts.js.wiki
+    namespace: sonia
+    valuesInline:
+      image.tag: 2.5
+      resources.limits:
+        cpu: 200m
+        memory: 256Mi
+      ingress.enabled: false
+      postgresql:
+        existingSecret: wikijs-postgres-secret
+        persistence:
+          enabled: true
+          size: 10Gi
+          storageClass: cephfs
+      startupProbe:
+        initialDelaySeconds: 120
