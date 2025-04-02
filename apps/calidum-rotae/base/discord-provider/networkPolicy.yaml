@@ -5,7 +5,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app: discord-provider
+      app: discord-provider-service
   policyTypes:
     - Ingress
   ingress:

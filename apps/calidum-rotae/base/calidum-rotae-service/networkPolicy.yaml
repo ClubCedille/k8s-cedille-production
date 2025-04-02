@@ -5,7 +5,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app: calidum-rotae
+      app: calidum-rotae-service
   policyTypes:
     - Ingress
   ingress:

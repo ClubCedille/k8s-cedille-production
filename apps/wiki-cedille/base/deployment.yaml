@@ -49,3 +49,13 @@ spec:
               drop: [ALL]
             seccompProfile:
               type: RuntimeDefault
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: wiki-cedille-pdb
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: wiki-cedille
