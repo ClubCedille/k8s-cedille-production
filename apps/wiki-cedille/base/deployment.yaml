@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: wiki-cedille
-          image: ghcr.io/clubcedille/wiki-cedille:latest
+          image: ghcr.io/clubcedille/wiki-cedille:etienneoh
           imagePullPolicy: Always
           env:
             - name: NGINX_ENABLE_ABSOLUTE_REDIRECT
