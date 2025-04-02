@@ -14,7 +14,7 @@ spec:
     namespace: integrale-website
   source:
     repoURL: https://github.com/ClubCedille/k8s-cedille-production
-    path: apps/integrale/website/prod
+    path: apps/integrale/prod
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
