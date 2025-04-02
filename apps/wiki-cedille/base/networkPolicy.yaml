@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-wiki-cedille
+spec:
+  podSelector:
+    matchLabels:
+      app: wiki-cedille
+  policyTypes:
+    - Ingress
+  ingress:
+    - from: []
