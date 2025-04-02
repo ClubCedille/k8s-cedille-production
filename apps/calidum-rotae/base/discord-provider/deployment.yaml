@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: discord-provider
-  namespace: calidum-rotae
 spec:
   replicas: 1
   selector:
