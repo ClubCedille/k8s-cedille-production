@@ -8,8 +8,5 @@ spec:
       app: discord-provider
   policyTypes:
     - Ingress
-    - Egress
   ingress:
     - from: []
-  egress:
-    - to: []
