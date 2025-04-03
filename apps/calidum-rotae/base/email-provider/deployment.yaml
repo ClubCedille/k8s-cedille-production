@@ -49,9 +49,8 @@ spec:
             - name: EMAIL_SUBJECT
               value: Submission
           readinessProbe:
-            httpGet:
-              path: /
-              port: 8080
+            tcpSocket:
+              port: 4000
             initialDelaySeconds: 5
             periodSeconds: 10
           resources:

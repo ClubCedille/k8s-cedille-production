@@ -36,9 +36,8 @@ spec:
                   name: calidum-rotae-secrets
                   key: DISCORD_WEBHOOK_URL
           readinessProbe:
-            httpGet:
-              path: /
-              port: 8080
+            tcpSocket:
+              port: 5000
             initialDelaySeconds: 5
             periodSeconds: 10
           resources:
