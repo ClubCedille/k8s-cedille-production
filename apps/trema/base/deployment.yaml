@@ -64,6 +64,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongo
+  annotations:
+    kube-score/ignore: container-resources, pod-networkpolicy,pod-probes, container-security-context-user-group-id
 spec:
   selector:
     matchLabels:
