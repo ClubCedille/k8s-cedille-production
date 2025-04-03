@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wiki-cedille
-  kube-score/ignore: container-image-pull-policy,container-image-tag
+  annotations:
+    kube-score/ignore: container-image-pull-policy,container-image-tag
 spec:
   replicas: 2
   selector:
