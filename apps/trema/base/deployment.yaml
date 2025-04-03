@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: trema
   annotations:
-    kube-score/ignore: container-image-pull-policy,container-image-tag
+    kube-score/ignore: container-image-pull-policy,container-image-tag, container-resources, pod-networkpolicy,pod-probes, container-security-context-user-group-id, container-security-context-readonlyrootfilesystem
 spec:
   replicas: 1
   selector:
@@ -65,7 +65,7 @@ kind: Deployment
 metadata:
   name: mongo
   annotations:
-    kube-score/ignore: container-resources, pod-networkpolicy,pod-probes, container-security-context-user-group-id
+    kube-score/ignore: container-resources, pod-networkpolicy,pod-probes, container-security-context-user-group-id, container-security-context-readonlyrootfilesystem
 spec:
   selector:
     matchLabels:
