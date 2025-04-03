@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wiki-cedille
+  kube-score/ignore: container-image-pull-policy
 spec:
   replicas: 2
   selector:
@@ -14,7 +15,7 @@ spec:
     spec:
       containers:
         - name: wiki-cedille
-          image: ghcr.io/clubcedille/wiki-cedille:etienneoh
+          image: ghcr.io/clubcedille/wiki-cedille:latest
           imagePullPolicy: Always
           env:
             - name: NGINX_ENABLE_ABSOLUTE_REDIRECT
