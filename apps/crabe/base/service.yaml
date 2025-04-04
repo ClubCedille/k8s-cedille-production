@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: crabe-svc
 spec:
-  ClusterIP: none
+  clusterIP: none
   selector:
     app: webapp-crabe
   ports:
