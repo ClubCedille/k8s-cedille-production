@@ -14,7 +14,7 @@ spec:
   project: default
   destination:
     server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-production
-    namespace: webapp-crabe
+    namespace: crabe
   source:
     repoURL: https://github.com/ClubCedille/k8s-cedille-production
     path: apps/crabe/webApp/prod
