@@ -9,17 +9,17 @@ metadata:
 spec:
   ingressClassName: contour
   tls:
-    - secretName: crabe-tls
-      hosts:
+    - hosts:
         - atelier.crabe.prod.cedille.club
+      secretName: crabe-tls
   rules:
     - host: atelier.crabe.prod.cedille.club
       http:
         paths:
-          - pathType: Prefix
-            path: /
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: crabe-svc
                 port:
-                  number: 8080
+                  name: http

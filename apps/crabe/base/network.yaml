@@ -3,9 +3,11 @@ kind: Service
 metadata:
   name: crabe-svc
 spec:
+  ports:
+    - name: http
+      targetPort: 8080
+      protocol: TCP
+      port: 80
   type: ClusterIP
   selector:
     app: webapp-crabe
-  ports:
-    - protocol: TCP
-      port: 8080
