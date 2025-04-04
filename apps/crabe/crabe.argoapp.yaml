@@ -17,7 +17,7 @@ spec:
     namespace: crabe
   source:
     repoURL: https://github.com/ClubCedille/k8s-cedille-production
-    path: apps/crabe/webApp/prod
+    path: apps/crabe/prod
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
