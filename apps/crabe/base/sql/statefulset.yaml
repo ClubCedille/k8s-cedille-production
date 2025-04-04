@@ -63,7 +63,7 @@ spec:
     - metadata:
         name: mysql-pv-claim
       spec:
-        storageClassName: local-hostpath
+        storageClassName: cephfs
         accessModes:
           - ReadWriteOnce
         resources:
