@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: commandes
+spec:
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    spec:
+      containers:
+        - name: cloudsql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:1.16
+          command: [
+              "/cloud_sql_proxy",
+              "-instances=fine-harbor-276700:northamerica-northeast1:postgres-operator-production=tcp:5432",
+              # If running on a VPC, the Cloud SQL proxy can connect via Private IP. See:
+              # https://cloud.google.com/sql/docs/mysql/private-ip for more info.
+              # "-ip_address_types=PRIVATE",
+              "-credential_file=/secrets/cloudsql/serviceaccounttf.json",
+            ]
+          securityContext:
+            runAsUser: 2 # non-root user
+            allowPrivilegeEscalation: false
+          resources:
+            limits:
+              cpu: 100m
+              memory: 64Mi
+          volumeMounts:
+            - name: cloudsql-instance-credentials
+              mountPath: /secrets/cloudsql
+              readOnly: true
+        - name: commandes
+          image: us.gcr.io/fine-harbor-276700/patchets/commandes:latest
+          ports:
+          - containerPort: 3000
+          resources:
+            limits:
+              memory: 512Mi
+          envFrom:
+            # Configuration comes from the configmap and the secrets.
+            - configMapRef:
+                name: commandes-config
+            - secretRef:
+                name: app-secrets
+      volumes:
+        - name: cloudsql-instance-credentials
+          secret:
+            secretName: cloudsql-instance-credentials
+      imagePullSecrets:
+        - name: gcrcedille-pull

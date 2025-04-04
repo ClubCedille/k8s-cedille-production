@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: patchets-commande
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+    argocd-image-updater.argoproj.io/image-list: website=us.gcr.io/fine-harbor-276700/patchets/commandes:latest
+    argocd-image-updater.argoproj.io/website.update-strategy: digest
+spec:
+  project: default
+  destination:
+    server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-production
+    namespace: patchets
+  source:
+    repoURL: https://github.com/ClubCedille/k8s-cedille-production
+    path: apps/patchets/prod
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

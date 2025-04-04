@@ -1,0 +1,33 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: patchets
+
+resources:
+- deployment.yaml
+- service.yaml
+- autoscaler.yaml
+- ingress.yaml
+- secrets.yaml
+# - seeder.yaml # TODO: Uncomment when seeding is needed.
+
+configMapGenerator:
+- name: commandes-config
+  envs: 
+  - config/.base_env
+
+commonLabels:
+  app.kubernetes.io/name: commandes
+  app.kubernetes.io/instance: commandes
+
+  
+configMapGenerator:
+- name: commandes-config
+  behavior: replace
+  literals:
+    - RAILS_ENV=production
+    - SQUARE_ENV=production
+
+images:
+- name: us.gcr.io/fine-harbor-276700/patchets/commandes
+  newTag: 1.5.0
