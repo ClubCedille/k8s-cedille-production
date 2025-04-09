@@ -4,3 +4,6 @@ kind: Kustomization
 resources:
   - network.yaml
   - deployment.yaml
+  - db/deployment.yaml
+  - db/network.yaml
+  - db/pvc.yaml

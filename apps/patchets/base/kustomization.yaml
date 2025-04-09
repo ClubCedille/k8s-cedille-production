@@ -31,3 +31,20 @@ configMapGenerator:
 images:
 - name: us.gcr.io/fine-harbor-276700/patchets/commandes
   newTag: 1.5.0
+
+helmCharts:
+- name: postgresql
+  repo: https://charts.bitnami.com/bitnami
+  version: 12.11.4
+  releaseName: commandes-db
+  namespace: patchets
+  valuesInline:
+    auth:
+      username: commandes
+      password: commandes-password
+      database: commandes_db
+    primary:
+      persistence:
+        enabled: true
+        size: 2Gi
+        storageClass: cephfs
