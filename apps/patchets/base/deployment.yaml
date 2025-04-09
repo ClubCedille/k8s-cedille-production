@@ -20,14 +20,9 @@ spec:
             limits:
               memory: 512Mi
           envFrom:
-            # Configuration comes from the configmap and the secrets.
             - configMapRef:
                 name: commandes-config
             - secretRef:
                 name: app-secrets
-      volumes:
-        - name: cloudsql-instance-credentials
-          secret:
-            secretName: cloudsql-instance-credentials
       imagePullSecrets:
         - name: gcrcedille-pull

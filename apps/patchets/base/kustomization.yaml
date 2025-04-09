@@ -27,6 +27,10 @@ configMapGenerator:
   literals:
     - RAILS_ENV=production
     - SQUARE_ENV=production
+    - DATABASE_HOST=commandes-db-postgresql
+    - DATABASE_PORT=5432
+    - DATABASE_NAME=commandes_db
+    - DATABASE_USER=commandes
 
 images:
 - name: us.gcr.io/fine-harbor-276700/patchets/commandes
