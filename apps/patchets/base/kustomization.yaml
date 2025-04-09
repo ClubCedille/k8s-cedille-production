@@ -41,10 +41,23 @@ helmCharts:
   releaseName: commandes-db
   namespace: patchets
   valuesInline:
-    auth:
-      username: commandes
-      password: commandes-password
-      database: commandes_db
+    primary:
+      extraEnvVars:
+        - name: POSTGRESQL_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DB_USER
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DB_PASS
+        - name: POSTGRESQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DB_NAME
     primary:
       persistence:
         enabled: true
