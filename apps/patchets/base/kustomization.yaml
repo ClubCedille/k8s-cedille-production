@@ -7,7 +7,6 @@ resources:
 - deployment.yaml
 - service.yaml
 - autoscaler.yaml
-- ingress.yaml
 - secrets.yaml
 # - seeder.yaml # TODO: Uncomment when seeding is needed.
 
@@ -23,7 +22,6 @@ commonLabels:
   
 configMapGenerator:
 - name: commandes-config
-  behavior: replace
   literals:
     - RAILS_ENV=production
     - SQUARE_ENV=production
@@ -39,7 +37,7 @@ images:
 helmCharts:
 - name: postgresql
   repo: https://charts.bitnami.com/bitnami
-  version: 12.11.4
+  version: 16.4.16
   releaseName: commandes-db
   namespace: patchets
   valuesInline:
