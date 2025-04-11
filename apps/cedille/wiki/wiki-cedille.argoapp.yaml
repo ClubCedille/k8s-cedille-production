@@ -14,7 +14,7 @@ spec:
     namespace: wiki-cedille
   source:
     repoURL: https://github.com/ClubCedille/k8s-cedille-production
-    path: apps/wiki-cedille/prod
+    path: apps/cedille/wiki/prod
     targetRevision: HEAD
   syncPolicy:
     syncOptions:

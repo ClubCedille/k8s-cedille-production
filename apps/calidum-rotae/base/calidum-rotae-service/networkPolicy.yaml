@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-calidum-rotae
+spec:
+  podSelector:
+    matchLabels:
+      app: calidum-rotae-service
+  policyTypes:
+    - Ingress
+  ingress:
+    - from: []

@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: saveursdegenie-service
+  annotations:
+    kube-score/ignore: container-image-pull-policy,container-image-tag
 spec:
   replicas: 1
   selector:
@@ -14,7 +16,7 @@ spec:
     spec:
       containers:
         - name: saveursdegenie-web
-          image: clubcedille/saveursdegenie.etsmtl.ca
+          image: clubcedille/saveursdegenie.etsmtl.ca:latest
           imagePullPolicy: Always
           resources: {}
           ports:

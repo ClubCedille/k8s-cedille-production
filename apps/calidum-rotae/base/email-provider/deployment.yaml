@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: email-provider
-  namespace: calidum-rotae
 spec:
   replicas: 1
   selector:
@@ -49,3 +48,26 @@ spec:
               value: cedille@etsmtl.net
             - name: EMAIL_SUBJECT
               value: Submission
+          readinessProbe:
+            tcpSocket:
+              port: 4000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+              ephemeral-storage: 1Gi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+              ephemeral-storage: 1Gi
+          securityContext:
+            runAsUser: 10001
+            runAsGroup: 10001
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: [ALL]
+            seccompProfile:
+              type: RuntimeDefault
