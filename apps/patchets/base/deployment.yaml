@@ -15,7 +15,7 @@ spec:
         - name: commandes
           image: us.gcr.io/fine-harbor-276700/patchets/commandes:latest
           ports:
-          - containerPort: 3000
+            - containerPort: 3000
           resources:
             limits:
               memory: 512Mi
