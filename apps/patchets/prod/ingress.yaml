@@ -11,7 +11,7 @@ spec:
   tls:
     - hosts:
         - commande.fraternitedupiranha.prod.cedille.club
-        secretName: commande-cert-tls
+      secretName: commande-cert-tls
   rules:
     - host: commande.fraternitedupiranha.prod.cedille.club
       http:
