@@ -9,10 +9,6 @@ resources:
   - autoscaler.yaml
   # - seeder.yaml # TODO: Uncomment when seeding is needed.
 
-labels:
-  app.kubernetes.io/name: commandes
-  app.kubernetes.io/instance: commandes
-
 configMapGenerator:
   - name: commandes-config
     literals:
