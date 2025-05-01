@@ -10,25 +10,16 @@ resources:
 - secrets.yaml
 # - seeder.yaml # TODO: Uncomment when seeding is needed.
 
-configMapGenerator:
-- name: commandes-config
-  envs: 
-  - config/.base_env
-
 commonLabels:
   app.kubernetes.io/name: commandes
   app.kubernetes.io/instance: commandes
 
-  
 configMapGenerator:
 - name: commandes-config
   literals:
     - RAILS_ENV=production
     - SQUARE_ENV=production
-    - DATABASE_HOST=commandes-db-postgresql
     - DATABASE_PORT=5432
-    - DATABASE_NAME=commandes_db
-    - DATABASE_USER=commandes
 
 images:
 - name: us.gcr.io/fine-harbor-276700/patchets/commandes
@@ -41,23 +32,10 @@ helmCharts:
   releaseName: commandes-db
   namespace: patchets
   valuesInline:
-    primary:
-      extraEnvVars:
-        - name: POSTGRESQL_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: db-secret
-              key: DB_USER
-        - name: POSTGRESQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: db-secret
-              key: DB_PASS
-        - name: POSTGRESQL_DATABASE
-          valueFrom:
-            secretKeyRef:
-              name: db-secret
-              key: DB_NAME
+    auth:
+      username: commandes_patchets_user
+      database: commandes_patchets2
+      existingSecret: commandes-patchets-secret
     primary:
       persistence:
         enabled: true
