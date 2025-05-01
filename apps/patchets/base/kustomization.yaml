@@ -7,7 +7,6 @@ resources:
   - deployment.yaml
   - service.yaml
   - autoscaler.yaml
-  - secrets.yaml
   # - seeder.yaml # TODO: Uncomment when seeding is needed.
 
 commonLabels:
