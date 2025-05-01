@@ -4,6 +4,6 @@ metadata:
   name: commandes
 spec:
   ports:
-  - name: commandes
-    port: 3000
-    targetPort: 3000
+    - name: commandes
+      port: 3000
+      targetPort: 3000
