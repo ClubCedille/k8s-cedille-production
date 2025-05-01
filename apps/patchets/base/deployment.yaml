@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: commandes
+spec:
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    spec:
+      containers:
+        - name: commandes
+          image: us.gcr.io/fine-harbor-276700/patchets/commandes:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              memory: 512Mi
+          envFrom:
+            - configMapRef:
+                name: commandes-config
+            - secretRef:
+                name: app-secrets
+      imagePullSecrets:
+        - name: gcrcedille-pull
