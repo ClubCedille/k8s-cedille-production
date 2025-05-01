@@ -9,17 +9,17 @@ metadata:
 spec:
   ingressClassName: contour
   tls:
-  - hosts:
-    - commande.fraternitedupiranha.prod.cedille.club
-    secretName: commande-cert-tls
+    - hosts:
+        - commande.fraternitedupiranha.prod.cedille.club
+        secretName: commande-cert-tls
   rules:
-  - host: commande.fraternitedupiranha.prod.cedille.club
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: commandes
-            port: 
-              number: 3000
+    - host: commande.fraternitedupiranha.prod.cedille.club
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: commandes
+                port:
+                  number: 3000
