@@ -4,9 +4,9 @@ metadata:
   name: grav
 spec:
   ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 8080
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
   selector:
     app: grav
 ---
@@ -21,17 +21,17 @@ metadata:
 spec:
   ingressClassName: contour
   tls:
-  - secretName: grav-tls
-    hosts:
-    - grav.prod.cedille.club
+    - secretName: grav-tls
+      hosts:
+        - grav.prod.cedille.club
   rules:
-  - host: grav.prod.cedille.club
-    http:
-      paths:
-      - pathType: Prefix
-        path: /
-        backend:
-          service:
-            name: grav
-            port:
-              number: 80
+    - host: grav.prod.cedille.club
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: grav
+                port:
+                  number: 80
