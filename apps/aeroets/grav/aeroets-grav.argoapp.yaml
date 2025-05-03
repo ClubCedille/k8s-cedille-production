@@ -13,7 +13,7 @@ spec:
   source:
     repoURL: https://github.com/ClubCedille/k8s-cedille-production
     path: apps/aeroets/grav/prod
-    targetRevision: HEAD 
+    targetRevision: HEAD
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true

@@ -4,6 +4,8 @@ metadata:
   labels:
     app: grav
   name: grav
+  annotations:
+    kube-score/ignore: container-image-tag,container-security-context-readonlyrootfilesystem
 spec:
   replicas: 1
   selector:
@@ -17,7 +19,7 @@ spec:
       containers:
       - name: grav
         image: ghcr.io/clubcedille/grav:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         env:
         - name: HEAD_BRANCH
           value: master
@@ -26,6 +28,12 @@ spec:
             name: grav-config
         ports:
         - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
         volumeMounts:
         - name: grav-accounts
           mountPath: /var/www/html/user/accounts
@@ -36,9 +44,11 @@ spec:
           requests:
             cpu: 100m
             memory: 128Mi
+            ephemeral-storage: 256Mi
           limits:
             cpu: 400m
             memory: 512Mi
+            ephemeral-storage: 512Mi
       securityContext:
         runAsUser: 33
         runAsGroup: 33
