@@ -18,7 +18,7 @@ patches:
         path: /spec/tls/0/hosts/0
         value: aeroets.prod.cedille.club
       - op: replace
-        path: /metadata/annotations/cert-manager.io/cluster-issuer
+        path: /metadata/annotations/cert-manager.io~1cluster-issuer
         value: letsencrypt-prod
   - target:
       kind: Deployment
