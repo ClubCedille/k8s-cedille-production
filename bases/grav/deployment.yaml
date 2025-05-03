@@ -27,11 +27,11 @@ spec:
             - secretRef:
                 name: grav-config
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           readinessProbe:
             httpGet:
               path: /
-              port: 8080
+              port: 80
             initialDelaySeconds: 30
             periodSeconds: 10
           volumeMounts:
