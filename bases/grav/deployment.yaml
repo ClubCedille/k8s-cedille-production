@@ -22,7 +22,7 @@ spec:
           imagePullPolicy: Always
           env:
             - name: HEAD_BRANCH
-              value: master
+              value: main
           envFrom:
             - secretRef:
                 name: grav-config
