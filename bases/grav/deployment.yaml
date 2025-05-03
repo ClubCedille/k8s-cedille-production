@@ -42,12 +42,12 @@ spec:
         # group 33 is www-data
           resources:
             requests:
-              cpu: 100m
-              memory: 128Mi
+              cpu: 300m
+              memory: 256Mi
               ephemeral-storage: 256Mi
             limits:
-              cpu: 400m
-              memory: 512Mi
+              cpu: 600m
+              memory: 768Mi
               ephemeral-storage: 512Mi
       securityContext:
         runAsUser: 33
