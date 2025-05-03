@@ -66,6 +66,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: grav-accounts-pvc
 spec:
+  storageClassName: cephfs
   accessModes:
     - "ReadWriteOnce"
   resources:
@@ -77,6 +78,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: grav-data-pvc
 spec:
+  storageClassName: cephfs
   accessModes:
     - "ReadWriteOnce"
   resources:
