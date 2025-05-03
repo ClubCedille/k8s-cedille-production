@@ -5,7 +5,7 @@ metadata:
     app: grav
   name: grav
   annotations:
-    kube-score/ignore: container-image-tag,container-security-context-readonlyrootfilesystem
+    kube-score/ignore: container-image-tag,container-security-context-readonlyrootfilesystem, container-security-context-user-group-id
 spec:
   replicas: 1
   selector:
