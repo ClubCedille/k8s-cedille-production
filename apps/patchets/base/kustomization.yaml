@@ -30,8 +30,8 @@ helmCharts:
         username: commandes_patchets_user
         database: commandes_patchets2
         existingSecret: commandes-patchets-secret
-        primary:
-          persistence:
-            enabled: true
-            size: 2Gi
-            storageClass: cephfs
+      primary:
+        persistence:
+          enabled: true
+          size: 2Gi
+          storageClass: cephfs
