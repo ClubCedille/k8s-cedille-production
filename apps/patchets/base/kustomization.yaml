@@ -22,9 +22,9 @@ images:
 
 helmCharts:
   - name: postgresql
-    releaseName: postgresql
+    releaseName: commandes-db
     version: 16.4.16
-    repo: https://charts.bitnami.com/bitnami
+    repo: https://charts.bitnami.com/bitnami/postgresql
     valuesInline:
       auth:
         username: commandes_patchets_user
