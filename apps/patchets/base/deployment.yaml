@@ -3,13 +3,13 @@ kind: Deployment
 metadata:
   name: commandes
 spec:
-  minReadySeconds: 10
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: commandes
   template:
+    metadata:
+      labels:
+        app: commandes
     spec:
       containers:
         - name: commandes
