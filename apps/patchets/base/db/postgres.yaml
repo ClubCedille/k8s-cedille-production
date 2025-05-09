@@ -34,7 +34,7 @@ spec:
       volumes:
         - name: postgres-data
           persistentVolumeClaim:
-            claimName: data-commandes-db-postgresql-0
+            claimName: postgres-pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -46,7 +46,7 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 4Gi
   storageClassName: cephfs
 ---
 apiVersion: v1
