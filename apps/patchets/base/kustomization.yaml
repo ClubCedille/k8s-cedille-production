@@ -22,16 +22,16 @@ images:
 
 helmCharts:
   - name: postgresql
-    releaseName: commandes-db
+    releaseName: postgresql
     version: 16.4.16
     repo: https://charts.bitnami.com/bitnami
-    # valuesInline:
-    #   auth:
-    #     username: commandes_patchets_user
-    #     database: commandes_patchets2
-    #     existingSecret: commandes-patchets-secret
-    #   primary:
-    #     persistence:
-    #       enabled: true
-    #       size: 2Gi
-    #       storageClass: cephfs
+    valuesInline:
+      auth:
+        username: commandes_patchets_user
+        database: commandes_patchets2
+        existingSecret: commandes-patchets-secret
+      primary:
+        persistence:
+          enabled: true
+          size: 2Gi
+          storageClass: cephfs
