@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: markets-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: markets-frontend
+  template:
+    metadata:
+      labels:
+        app: markets-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: ghcr.io/algoets/markets-frontend:latest
+          ports:
+            - containerPort: 80
+          envFrom:
+            - secretRef:
+                name: markets-env-secret
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+      imagePullSecrets:
+        - name: ghcr-secret
