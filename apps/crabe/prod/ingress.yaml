@@ -11,9 +11,9 @@ spec:
   tls:
     - secretName: crabe-tls
       hosts:
-        - atelier.crabe.prod.cedille.club
+        - atelier.crabe.cedille.club
   rules:
-    - host: atelier.crabe.prod.cedille.club
+    - host: atelier.crabe.cedille.club
       http:
         paths:
           - pathType: Prefix
