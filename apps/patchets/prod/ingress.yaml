@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: commandes
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    kubernetes.io/tls-acme: "true"
+spec:
+  ingressClassName: contour
+  tls:
+    - hosts:
+        - commande.fraternitedupiranha.prod.cedille.club
+      secretName: commande-cert-tls
+  rules:
+    - host: commande.fraternitedupiranha.prod.cedille.club
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: commandes
+                port:
+                  number: 3000

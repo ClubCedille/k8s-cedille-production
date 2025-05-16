@@ -62,6 +62,10 @@ spec:
                 secretKeyRef:
                   name: webapp-crabe-secrets
                   key: ITEMS_INVENTORY_PAGE
+            - name: EMAIL_ADDRESS
+              value: "crabe@ens.etsmtl.ca"
+            - name: VERSION_NUMBER
+              value: "1.0.2"
           image: ghcr.io/crabe-etsmtl/crabe-atelier:latest
           imagePullPolicy: Always
           ports:

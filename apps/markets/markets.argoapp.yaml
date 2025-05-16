@@ -1,25 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cedille
+  name: markets
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "2"
-    argocd-image-updater.argoproj.io/image-list: webapp=ghcr.io/clubcedille/cedille.etsmtl.ca:latest
-    argocd-image-updater.argoproj.io/webapp.update-strategy: digest
+    argocd-image-updater.argoproj.io/image-list: backend=ghcr.io/algoets/markets-backend:latest,frontend=ghcr.io/algoets/markets-frontend:latest
+    argocd-image-updater.argoproj.io/backend.update-strategy: digest
+    argocd-image-updater.argoproj.io/frontend.update-strategy: digest
 spec:
   project: default
   destination:
     server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-production
-    namespace: cedille
+    namespace: markets
   source:
     repoURL: https://github.com/ClubCedille/k8s-cedille-production
-    path: apps/cedille/prod
+    path: apps/markets/prod
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-      - Replace=true
     automated:
       selfHeal: true
       prune: true
