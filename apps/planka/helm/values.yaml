@@ -72,6 +72,7 @@ ingress:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     ingress.kubernetes.io/force-ssl-redirect: "true"
     kubernetes.io/tls-acme: "true"
+    projectcontour.io/websocket-routes: /socket.io
   hosts:
     # Used to set planka BASE_URL if no `baseurl` is provided.
     - host: planka.prod.cedille.club
