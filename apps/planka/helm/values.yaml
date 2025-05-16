@@ -14,6 +14,9 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+admin_email: "admin@cedille.club"
+admin_name: "Cedille Admin"
+
 # Generate a secret using openssl rand -base64 45
 secretkey: ""
 
