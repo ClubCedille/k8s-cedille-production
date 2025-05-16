@@ -23,7 +23,6 @@ spec:
     #       value: "%REQ(:scheme)%"
     #     # - name: Host
     #     #   value: "%REQ(:AUTHORITY)%"
-    service:
-      name: planka
-      port:
-        number: 1337
+    services:
+    - name: planka
+      port: 1337
