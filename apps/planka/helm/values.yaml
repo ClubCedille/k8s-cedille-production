@@ -211,8 +211,8 @@ oidc:
 ##     key: key-inside-the-secret
 ##
 extraEnv: 
-  - name: DEFAULT_ADMIN_EMAIL
-    value: admin@cedille.club
+  # - name: DEFAULT_ADMIN_EMAIL
+  #   value: admin@cedille.club
   #- DEFAULT_ADMIN_PASSWORD=demo
   - name: DEFAULT_ADMIN_NAME
     value: Admin Cedille
