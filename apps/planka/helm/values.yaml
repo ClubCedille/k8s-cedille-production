@@ -160,7 +160,7 @@ persistence:
 oidc:
   ## @param oidc.enabled Enable single sign-on (SSO) with OpenID Connect (OIDC)
   ##
-  enabled: false
+  enabled: true
 
   ## OIDC credentials
   ## @param oidc.clientId A string unique to the provider that identifies your app.
@@ -175,11 +175,11 @@ oidc:
   ## NOTE: Must contain key `clientId` and `clientSecret`
   ## NOTE: When it's set, the `clientId` and `clientSecret` parameters are ignored
   ##
-  existingSecret: ""
+  existingSecret: "oidc-secret"
 
   ## @param oidc.issuerUrl The OpenID connect metadata document endpoint
   ##
-  issuerUrl: ""
+  issuerUrl: "https://auth.etsmtl.club/application/o/planka/"
 
   ## @param oidc.scopes A list of scopes required for OIDC client.
   ## If empty will default to `openid`, `profile` and `email`
@@ -202,8 +202,8 @@ oidc:
 
     ## @param oidc.admin.roles The names of the admin groups
     ##
-    roles: []
-      # - planka-admin
+    roles:
+      - admin
 
 ## Extra environment variables for planka deployment
 ## Supports hard coded and getting values from a k8s secret
