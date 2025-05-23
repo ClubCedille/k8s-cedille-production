@@ -12,9 +12,9 @@ spec:
   tls:
     - secretName: calidum-rotae-service-tls
       hosts:
-        - calidum-rotae.etsmtl.ca
+        - calidum-rotae.prod.cedille.club
   rules:
-    - host: calidum-rotae.etsmtl.ca
+    - host: calidum-rotae.prod.cedille.club
       http:
         paths:
           - pathType: Prefix
