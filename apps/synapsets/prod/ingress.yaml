@@ -11,10 +11,10 @@ spec:
   ingressClassName: contour
   tls:
     - hosts:
-        - synapsets.prod.cedille.club
+        - synapsets.etsmtl.ca
       secretName: synapsets-tls
   rules:
-    - host: synapsets.prod.cedille.club
+    - host: synapsets.etsmtl.ca
       http:
         paths:
           - path: /

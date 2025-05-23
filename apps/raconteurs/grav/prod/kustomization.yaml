@@ -13,10 +13,10 @@ patches:
     patch: |-
       - op: replace
         path: /spec/rules/0/host
-        value: raconteurs.prod.cedille.club
+        value: raconteurs.etsmtl.ca
       - op: replace
         path: /spec/tls/0/hosts/0
-        value: raconteurs.prod.cedille.club
+        value: raconteurs.etsmtl.ca
       - op: replace
         path: /metadata/annotations/cert-manager.io~1cluster-issuer
         value: letsencrypt-prod

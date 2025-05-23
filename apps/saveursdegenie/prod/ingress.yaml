@@ -11,10 +11,10 @@ spec:
   ingressClassName: contour
   tls:
     - hosts:
-        - saveursdegenie.prod.cedille.club
+        - saveursdegenie.etsmtl.ca
       secretName: saveursdegenie-cert-traefik-tls
   rules:
-    - host: saveursdegenie.prod.cedille.club
+    - host: saveursdegenie.etsmtl.ca
       http:
         paths:
           - path: /
