@@ -30,4 +30,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/image
-        value: ghcr.io/clubcedille/grav:raconteurs
+        value: ghcr.io/clubcedille/grav:raceonteurs
