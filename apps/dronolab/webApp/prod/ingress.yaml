@@ -16,10 +16,10 @@ spec:
     - host: dronolab.etsmtl.ca
       http:
         paths:
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: svc-webapp-dronolab
-              port:
-                number: 3000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: svc-webapp-dronolab
+                port:
+                  number: 3000
