@@ -10,8 +10,8 @@ metadata:
 spec:
   project: default
   destination:
-  server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-production
-    namespace: webapp-dronolab
+    server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-production
+  namespace: webapp-dronolab
   source:
     repoURL: https://github.com/ClubCedille/k8s-cedille-production
     path: apps/dronolab/webApp/prod
