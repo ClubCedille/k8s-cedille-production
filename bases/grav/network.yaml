@@ -23,9 +23,9 @@ spec:
   tls:
     - secretName: grav-tls
       hosts:
-        - grav.etsmtl.ca
+        - grav.prod.cedille.club
   rules:
-    - host: grav.etsmtl.ca
+    - host: grav.prod.cedille.club
       http:
         paths:
           - pathType: Prefix
