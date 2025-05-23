@@ -6,10 +6,6 @@ namePrefix: raconteurs-
 resources:
   - ../../../../bases/grav
 
-images:
-  - name: "ghcr.io/clubcedille/grav:0.0.8"
-    newTag: "1.7.45.1"
-
 patches:
   - target:
       kind: Ingress
@@ -30,4 +26,7 @@ patches:
     patch: |-
       - op: replace
         path: /spec/template/spec/containers/0/image
-        value: ghcr.io/clubcedille/grav:raceonteurs
+        value: ghcr.io/clubcedille/grav:raconteurs
+      - op: replace
+        path: /spec/template/spec/containers/0/env/0/value
+        value: master
