@@ -11,9 +11,9 @@ spec:
   tls:
     - secretName: capra-wikijs-tls
       hosts:
-        - wiki.capra.prod.cedille.club
+        - wiki.capra.etsmtl.ca
   rules:
-    - host: wiki.capra.prod.cedille.club
+    - host: wiki.capra.etsmtl.ca
       http:
         paths:
           - path: /

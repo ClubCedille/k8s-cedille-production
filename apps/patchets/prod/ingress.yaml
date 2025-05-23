@@ -10,10 +10,10 @@ spec:
   ingressClassName: contour
   tls:
     - hosts:
-        - commande.fraternitedupiranha.prod.cedille.club
+        - commande.fraternitedupiranha.etsmtl.ca
       secretName: commande-cert-tls
   rules:
-    - host: commande.fraternitedupiranha.prod.cedille.club
+    - host: commande.fraternitedupiranha.etsmtl.ca
       http:
         paths:
           - path: /
