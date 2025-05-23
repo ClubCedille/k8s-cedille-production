@@ -12,11 +12,11 @@ spec:
         app: webapp-dronolab
     spec:
       containers:
-      - name: webapp-dronolab
-        image: ghcr.io/dronolab/dronolab-website:latest
-        ports:
-        - containerPort: 3000
-        resources:
-          limits:
-            cpu: 200m
-            memory: 256Mi
+        - name: webapp-dronolab
+          image: ghcr.io/dronolab/dronolab-website:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: 200m
+              memory: 256Mi
