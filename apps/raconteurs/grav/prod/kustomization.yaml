@@ -19,7 +19,7 @@ patches:
         value: raconteurs.etsmtl.ca
       - op: replace
         path: /metadata/annotations/cert-manager.io~1cluster-issuer
-        value: letsencrypt-prod
+        value: letsencrypt-http
   - target:
       kind: Deployment
       name: grav
