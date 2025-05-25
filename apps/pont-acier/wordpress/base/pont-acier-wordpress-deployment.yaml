@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pont-wordpress
+  namespace: pontacier
+  labels:
+    app: pont
+spec:
+  selector:
+    matchLabels:
+      app: pont
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: pont
+        tier: frontend
+    spec:
+      containers:
+      # Last stable image: us.gcr.io/fine-harbor-276700/wordpress-pont-acier@sha256:8dfd6db16d6380f5e0302aeb74ed696137acada0372b7728e613a91b8e1b1e04
+      - image: us.gcr.io/fine-harbor-276700/wordpress-pont-acier:v1.0.0
+        name: pont-wordpress
+        envFrom:
+        - secretRef:
+            name: pont-secret
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: pont-wordpress-persistent-storage
+          mountPath: /var/www/html
+        resources: {}
+      - name: cloudsql-proxy
+        image: gcr.io/cloudsql-docker/gce-proxy:1.16
+        command: ["/cloud_sql_proxy",
+                  "-instances=fine-harbor-276700:northamerica-northeast1:mysql-production-operator=tcp:3306",
+                  # If running on a VPC, the Cloud SQL proxy can connect via Private IP. See:
+                  # https://cloud.google.com/sql/docs/mysql/private-ip for more info.
+                  # "-ip_address_types=PRIVATE",
+                  "-credential_file=/secrets/cloudsql/serviceaccounttf.json"]
+        securityContext:
+          runAsUser: 2  # non-root user
+          allowPrivilegeEscalation: false
+        volumeMounts:
+          - name: cloudsql-instance-credentials
+            mountPath: /secrets/cloudsql
+            readOnly: true
+      volumes:
+      - name: pont-wordpress-persistent-storage
+        persistentVolumeClaim:
+          claimName: pont-wp-pv-claim
+      - name: cloudsql-instance-credentials
+        secret:
+          secretName: cloudsql-instance-credentials
+      imagePullSecrets:
+        - name: gcrcedille-pull
