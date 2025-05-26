@@ -5,5 +5,7 @@ resources:
 - pont-acier-roles.yaml
 - pont-acier-wordpress-deployment.yaml
 - network.yaml
+- db/statefulset.yaml
+- db/service.yaml
 
 namespace: pontacier
