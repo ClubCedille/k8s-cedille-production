@@ -5,15 +5,15 @@ metadata:
   namespace: pontacier
   annotations:
     kubernetes.io/ingress.class: "traefik"
-    cert-manager.io/cluster-issuer: "letsencrypt-traefik-prod"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
     kubernetes.io/tls-acme: "true"
 spec:
   tls:
     - hosts:
-        - pontacier.etsmtl.ca
+        - pontacier.prod.cedille.club
       secretName: pontacier-cert-traefik-tls
   rules:
-  - host: pontacier.etsmtl.ca
+  - host: pontacier.prod.cedille.club
     http:
       paths:
       - path: /
