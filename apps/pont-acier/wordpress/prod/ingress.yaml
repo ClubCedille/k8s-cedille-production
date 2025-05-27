@@ -1,25 +1,34 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
 metadata:
-  name: pont-ingress
-  annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-http
-    ingress.kubernetes.io/force-ssl-redirect: "true"
-    kubernetes.io/tls-acme: "true"
+  name: wordpress
+  namespace: pontacier
 spec:
-  ingressClassName: contour
-  tls:
-    - hosts:
-        - pontacier.etsmtl.ca
-      secretName: pont-website-tls
-  rules:
-    - host: pontacier.etsmtl.ca
-      http:
-        paths:
-          - pathType: Prefix
-            path: /
-            backend:
-              service:
-                name: pont-wordpress
-                port:
-                  name: http
+  virtualhost:
+    fqdn: pontacier.etsmtl.ca
+    tls:
+      secretName: tls-pontacier
+  routes:
+    - conditions:
+        - prefix: /
+      services:
+        - name: pont-wordpress
+          port: 80
+      requestHeadersPolicy:
+        set:
+          - name: X-Forwarded-Proto
+            value: https
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tls-pontacier
+  namespace: pontacier
+spec:
+  secretName: tls-pontacier
+  issuerRef:
+    name: letsencrypt-http
+    kind: ClusterIssuer
+  commonName: pontacier.etsmtl.ca
+  dnsNames:
+    - pontacier.etsmtl.ca
