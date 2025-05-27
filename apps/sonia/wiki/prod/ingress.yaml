@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: wikijs
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-http
     ingress.kubernetes.io/force-ssl-redirect: "true"
     kubernetes.io/tls-acme: "true"
 spec:
@@ -11,9 +11,9 @@ spec:
   tls:
     - secretName: wikijs-cert-tls
       hosts:
-        - wiki.sonia.prod.cedille.club
+        - wiki.sonia.etsmtl.ca
   rules:
-    - host: wiki.sonia.prod.cedille.club
+    - host: wiki.sonia.etsmtl.ca
       http:
         paths:
           - path: /

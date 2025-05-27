@@ -4,17 +4,17 @@ metadata:
   name: synapsets
   namespace: synapsets
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-http
     ingress.kubernetes.io/force-ssl-redirect: "true"
     kubernetes.io/tls-acme: "true"
 spec:
   ingressClassName: contour
   tls:
     - hosts:
-        - synapsets.prod.cedille.club
+        - synapsets.etsmtl.ca
       secretName: synapsets-tls
   rules:
-    - host: synapsets.prod.cedille.club
+    - host: synapsets.etsmtl.ca
       http:
         paths:
           - path: /

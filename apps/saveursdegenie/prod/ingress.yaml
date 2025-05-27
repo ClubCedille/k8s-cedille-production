@@ -4,17 +4,17 @@ metadata:
   name: saveursdegenie
   namespace: saveursdegenie
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: letsencrypt-http
     ingress.kubernetes.io/force-ssl-redirect: "true"
     kubernetes.io/tls-acme: "true"
 spec:
   ingressClassName: contour
   tls:
     - hosts:
-        - saveursdegenie.prod.cedille.club
+        - saveursdegenie.etsmtl.ca
       secretName: saveursdegenie-cert-traefik-tls
   rules:
-    - host: saveursdegenie.prod.cedille.club
+    - host: saveursdegenie.etsmtl.ca
       http:
         paths:
           - path: /
