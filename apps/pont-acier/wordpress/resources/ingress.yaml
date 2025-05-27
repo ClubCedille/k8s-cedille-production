@@ -1,25 +1,25 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: pont
-  namespace: pontacier
+  name: pont-ingress
   annotations:
-    kubernetes.io/ingress.class: "traefik"
-    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+    ingress.kubernetes.io/force-ssl-redirect: "true"
     kubernetes.io/tls-acme: "true"
 spec:
+  ingressClassName: contour
   tls:
     - hosts:
         - pontacier.prod.cedille.club
-      secretName: pontacier-cert-traefik-tls
+      secretName: pont-website-tls
   rules:
-  - host: pontacier.prod.cedille.club
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: pont-wordpress
-            port:
-              name: http
+    - host: pontacier.prod.cedille.club
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: pont-wordpress
+                port:
+                  name: http
