@@ -10,10 +10,10 @@ spec:
   ingressClassName: contour
   tls:
     - hosts:
-        - pontacier.prod.cedille.club
+        - pontacier.etsmtl.ca
       secretName: pont-website-tls
   rules:
-    - host: pontacier.prod.cedille.club
+    - host: pontacier.etsmtl.ca
       http:
         paths:
           - pathType: Prefix
