@@ -12,7 +12,7 @@ spec:
     namespace: pontacier
   source:
     repoURL: https://github.com/ClubCedille/k8s-cedille-production
-    path: apps/pontacier/wordpress/prod
+    path: apps/pont-acier/wordpress/prod
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
