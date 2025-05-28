@@ -1,45 +1,45 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pont-wordpress
-  namespace: pontacier
+  name: preci-wordpress
+  namespace: preci
   labels:
-    app: pont
+    app: preci
 spec:
   selector:
     matchLabels:
-      app: pont
+      app: preci
       tier: frontend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: pont
+        app: preci
         tier: frontend
     spec:
       containers:
-        - image: wordpress:6.0.2 #us.gcr.io/fine-harbor-276700/wordpress-pont-acier:v1.0.0
-          name: pont-wordpress
+        - image: wordpress:6.0.2 #us.gcr.io/fine-harbor-276700/wordpress-preci-acier:v1.0.0
+          name: preci-wordpress
           envFrom:
             - secretRef:
-                name: pont-secret
+                name: preci-secret
           ports:
             - containerPort: 80
           volumeMounts:
-            - name: pont-wordpress-persistent-storage
+            - name: preci-wordpress-persistent-storage
               mountPath: /var/www/html
           resources: {}
       volumes:
-        - name: pont-wordpress-persistent-storage
+        - name: preci-wordpress-persistent-storage
           persistentVolumeClaim:
-            claimName: pont-wp-pv-claim
+            claimName: preci-wp-pv-claim
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pont-wp-pv-claim
-  namespace: pontacier
+  name: preci-wp-pv-claim
+  namespace: preci
 spec:
   accessModes:
     - ReadWriteOnce
