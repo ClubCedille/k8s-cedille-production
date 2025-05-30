@@ -10,11 +10,11 @@ metadata:
 spec:
   ingressClassName: contour
   tls:
-    - hosts:
+  - hosts:
         - cedille.etsmtl.ca
       secretName: cedille-cert-traefik-tls
   rules:
-    - host: cedille.etsmtl.ca
+  - host: cedille.etsmtl.ca
       http:
         paths:
           - path: /
