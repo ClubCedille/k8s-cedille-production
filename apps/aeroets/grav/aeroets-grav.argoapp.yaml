@@ -18,6 +18,7 @@ spec:
     path: apps/aeroets/grav/prod
     targetRevision: HEAD
   syncPolicy:
+  
     syncOptions:
     - CreateNamespace=true
     automated:
