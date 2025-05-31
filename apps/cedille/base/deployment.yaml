@@ -13,6 +13,8 @@ selector:
         app: cedille-service
     spec:
       containers:
+
+
       
       - name: cedille-service
           image: ghcr.io/clubcedille/cedille.etsmtl.ca:latest
