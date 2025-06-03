@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: commandes
-          image: us.gcr.io/fine-harbor-276700/patchets/commandes:latest
+          image: ghcr.io/clubcedille/patchets-commande:latest
           ports:
             - containerPort: 3000
           resources:
@@ -25,4 +25,4 @@ spec:
             - secretRef:
                 name: app-secrets
       imagePullSecrets:
-        - name: gcrcedille-pull
+        - name: patchets-pull
