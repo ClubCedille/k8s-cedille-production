@@ -16,7 +16,3 @@ configMapGenerator:
       - RAILS_ENV=production
       - SQUARE_ENV=production
       - DATABASE_PORT=5432
-
-images:
-  - name: us.gcr.io/fine-harbor-276700/patchets/commandes
-    newTag: 1.5.0
