@@ -14,10 +14,20 @@ spec:
     spec:
       imagePullSecrets:
         - name: ghcr-ingenieuses-secret
+      volumes:
+        - name: nginx-cache
+          emptyDir: {}
+        - name: nginx-run
+          emptyDir: {}
       containers:
         - name: ingenieuses
           image: ghcr.io/les-ingenieuses-de-l-ets/web-ingenieuses:latest
           imagePullPolicy: Always
+          volumeMounts:
+            - name: nginx-cache
+              mountPath: /var/cache/nginx
+            - name: nginx-run
+              mountPath: /run
           ports:
             - containerPort: 3000
           resources:
