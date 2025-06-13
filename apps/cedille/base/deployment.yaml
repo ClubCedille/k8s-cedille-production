@@ -16,7 +16,6 @@ spec:
         - name: cedille-service
           image: ghcr.io/clubcedille/cedille.etsmtl.ca:latest
           imagePullPolicy: Always
-          resources: {}
           ports:
             - containerPort: 80
           resources:
