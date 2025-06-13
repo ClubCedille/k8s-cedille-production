@@ -29,7 +29,7 @@ spec:
             - name: nginx-run
               mountPath: /run
           ports:
-            - containerPort: 3000
+            - containerPort: 80
           resources:
             requests:
               cpu: 100m
