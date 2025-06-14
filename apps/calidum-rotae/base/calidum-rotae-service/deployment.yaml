@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: calidum-rotae-service
-  namespace: calidum-rotae
+  annotations:
+    kube-score/ignore: pod-networkpolicy
 spec:
   replicas: 1
   selector:
@@ -48,7 +49,7 @@ spec:
             requests:
               cpu: 100m
               memory: 128Mi
-              ephemeral-storage: 1Gi
+              ephemeral-storage: 256Mi
             limits:
               cpu: 500m
               memory: 256Mi

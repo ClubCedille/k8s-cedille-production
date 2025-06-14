@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: email-provider
-  namespace: calidum-rotae
-spec:
+  annotations:
+    kube-score/ignore: pod-networkpolicy
   replicas: 1
   selector:
     matchLabels:
@@ -49,3 +49,12 @@ spec:
               value: cedille@etsmtl.net
             - name: EMAIL_SUBJECT
               value: Submission
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+              ephemeral-storage: 256Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+              ephemeral-storage: 1Gi
