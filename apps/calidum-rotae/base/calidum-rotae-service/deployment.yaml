@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: calidum-rotae-service
-  namespace: calidum-rotae
 spec:
   replicas: 1
   selector:
