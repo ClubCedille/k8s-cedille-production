@@ -10,4 +10,7 @@ spec:
       targetPort: 6000
       protocol: TCP
       port: 80
+    - name: metrics
+      port: 8000
+      targetPort: 8000
   type: ClusterIP
