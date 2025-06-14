@@ -14,7 +14,7 @@ spec:
       include: "{*.argoapp.yaml,*.argoapp.yml}"
   syncPolicy:
         automated:
-          selfHeal: true
-          prune: true
+          selfHeal: false
+          prune: false
         syncOptions:
           - CreateNamespace=true
