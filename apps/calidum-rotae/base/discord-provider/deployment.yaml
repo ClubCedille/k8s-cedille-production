@@ -36,3 +36,19 @@ metadata:
               cpu: 500m
               memory: 256Mi
               ephemeral-storage: 1Gi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - discord-provider
+              topologyKey: "kubernetes.io/hostname"
