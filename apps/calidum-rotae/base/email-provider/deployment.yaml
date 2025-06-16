@@ -4,6 +4,7 @@ metadata:
   name: email-provider
   annotations:
     kube-score/ignore: pod-networkpolicy
+spec:
   replicas: 1
   selector:
     matchLabels:
@@ -13,6 +14,16 @@ metadata:
       labels:
         app: email-provider
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - email-provider
+              topologyKey: "kubernetes.io/hostname"
       containers:
         - name: email-provider
           image: ghcr.io/clubcedille/email-provider:1.0.2
@@ -49,3 +60,13 @@ metadata:
               cpu: 500m
               memory: 256Mi
               ephemeral-storage: 1Gi
+---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: email-provider-pdb
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: email-provider
