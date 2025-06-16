@@ -2,17 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: discord-provider
-  annotations:
-    kube-score/ignore: pod-networkpolicy
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discord-provider
+  template:
+    metadata:
+      labels:
         app: discord-provider
-    template:
-      metadata:
-        labels:
-          app: discord-provider
+    spec:
       containers:
         - name: discord-provider
           image: ghcr.io/clubcedille/discord-provider:1.0.2
@@ -52,3 +51,13 @@ metadata:
                     values:
                       - discord-provider
               topologyKey: "kubernetes.io/hostname"
+---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: discord-provider-pdb
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: discord-provider
