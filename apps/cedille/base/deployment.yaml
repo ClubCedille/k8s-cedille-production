@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cedille-service
+  name: cedille
   annotations:
     kube-score/ignore: container-image-pull-policy,container-image-tag, pod-networkpolicy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cedille-service
+      app: cedille
   template:
     metadata:
       labels:
-        app: cedille-service
+        app: cedille
     spec:
       containers:
-        - name: cedille-service
+        - name: cedille
           image: ghcr.io/clubcedille/cedille.etsmtl.ca:latest
           imagePullPolicy: Always
           ports:

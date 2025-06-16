@@ -11,4 +11,4 @@ spec:
       port: 80
   type: ClusterIP
   selector:
-    app: cedille-service
+    app: cedille
