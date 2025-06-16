@@ -4,15 +4,15 @@ metadata:
   name: discord-provider
   annotations:
     kube-score/ignore: pod-networkpolicy
-  replicas: 1
-  selector:
-    matchLabels:
-      app: discord-provider
-  template:
-    metadata:
-      labels:
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
         app: discord-provider
-    spec:
+    template:
+      metadata:
+        labels:
+          app: discord-provider
       containers:
         - name: discord-provider
           image: ghcr.io/clubcedille/discord-provider:1.0.2
