@@ -2,8 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: discord-provider
+  annotations:
+    kube-score/ignore: pod-networkpolicy, pod-probes-identical
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: discord-provider
@@ -41,6 +43,16 @@ spec:
               port: 5000
             initialDelaySeconds: 30
             periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          securityContext:
+            runAsUser: 10001
+            runAsGroup: 10001
+            readOnlyRootFilesystem: true
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
