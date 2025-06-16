@@ -12,21 +12,12 @@ metadata:
     metadata:
       labels:
         app: discord-provider
-      annotations:
-        # vault.hashicorp.com/agent-inject: 'true'
-        # vault.hashicorp.com/tls-skip-verify: 'true'
-        # vault.hashicorp.com/role: 'secret-reader'
-        # vault.hashicorp.com/agent-inject-template-discord-provider-env: |
-        #   {{- with secret "kv/calidum-rotae/default/discord-provider-env" -}}
-        #     export DISCORD_WEBHOOK_URL="{{ .Data.data.discord_webhook_url }}"
-        #   {{- end }}
     spec:
       containers:
         - name: discord-provider
           image: ghcr.io/clubcedille/discord-provider:1.0.2
           imagePullPolicy: Always
           command:
-            # ['/bin/sh', '-c', 'source /vault/secrets/discord-provider-env && /discord_provider --port 5000']
             ['/bin/sh', '-c', '/discord_provider --port 5000']
           ports:
             - containerPort: 5000

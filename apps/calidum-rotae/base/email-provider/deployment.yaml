@@ -12,21 +12,12 @@ metadata:
     metadata:
       labels:
         app: email-provider
-      annotations:
-        # vault.hashicorp.com/agent-inject: 'true'
-        # vault.hashicorp.com/tls-skip-verify: 'true'
-        # vault.hashicorp.com/role: 'secret-reader'
-        # vault.hashicorp.com/agent-inject-template-email-provider-env: |
-        #   {{- with secret "kv/calidum-rotae/default/email-provider-env" -}}
-        #     export EMAIL_SMTP_API_KEY="{{ .Data.data.email_smtp_api_key }}"
-        #   {{- end }}
     spec:
       containers:
         - name: email-provider
           image: ghcr.io/clubcedille/email-provider:1.0.2
           imagePullPolicy: Always
           command:
-            # ['/bin/sh', '-c', 'source /vault/secrets/email-provider-env && /email_provider --port 4000']
             ['/bin/sh', '-c', '/email_provider --port 4000']
           ports:
             - containerPort: 4000
