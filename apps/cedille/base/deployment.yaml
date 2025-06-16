@@ -9,10 +9,6 @@ spec:
   selector:
     matchLabels:
       app: cedille
-  template:
-    metadata:
-      labels:
-        app: cedille
     spec:
       containers:
         - name: cedille
