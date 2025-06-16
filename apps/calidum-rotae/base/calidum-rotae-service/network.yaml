@@ -5,7 +5,7 @@ metadata:
   namespace: calidum-rotae
 spec:
   selector:
-    app: calidum-rotae-service
+    app: calidum-rotae
   ports:
     - protocol: TCP
       port: 3000

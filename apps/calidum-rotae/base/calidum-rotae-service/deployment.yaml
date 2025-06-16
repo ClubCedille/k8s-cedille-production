@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: calidum-rotae-service
+  name: calidum-rotae
   annotations:
     kube-score/ignore: pod-networkpolicy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: calidum-rotae-service
+      app: calidum-rotae
   template:
     metadata:
       labels:
-        app: calidum-rotae-service
+        app: calidum-rotae
     spec:
       containers:
-        - name: calidum-rotae-service
+        - name: calidum-rotae
           image: ghcr.io/clubcedille/calidum-rotae-service:1.0.3
           imagePullPolicy: Always
           env:
