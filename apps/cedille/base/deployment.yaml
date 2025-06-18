@@ -5,7 +5,7 @@ metadata:
   annotations:
     kube-score/ignore: container-image-pull-policy,container-image-tag, pod-networkpolicy
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: cedille
