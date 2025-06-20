@@ -20,9 +20,17 @@ spec:
         - name: trema
           image: ghcr.io/clubcedille/trema:latest
           imagePullPolicy: Always
-          resources: {}
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
           ports:
             - containerPort: 6000
+            - name: metrics
+              containerPort: 9090
           readinessProbe:
             exec:
               command:
