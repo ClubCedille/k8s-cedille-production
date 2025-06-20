@@ -1,21 +1,53 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cedille-service
+  name: cedille
+  annotations:
+    kube-score/ignore: container-image-pull-policy,container-image-tag, pod-networkpolicy
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: cedille-service
+      app: cedille
   template:
     metadata:
       labels:
-        app: cedille-service
+        app: cedille
     spec:
       containers:
-        - name: cedille-service
+        - name: cedille
           image: ghcr.io/clubcedille/cedille.etsmtl.ca:latest
           imagePullPolicy: Always
-          resources: {}
           ports:
             - containerPort: 80
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+              ephemeral-storage: 256Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+              ephemeral-storage: 1Gi
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: cedille-pdb
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: cedille

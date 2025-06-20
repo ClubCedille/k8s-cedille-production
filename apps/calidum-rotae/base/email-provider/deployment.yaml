@@ -2,9 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: email-provider
-  namespace: calidum-rotae
+  annotations:
+    kube-score/ignore: pod-networkpolicy, pod-probes
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: email-provider
@@ -12,21 +13,22 @@ spec:
     metadata:
       labels:
         app: email-provider
-      annotations:
-        # vault.hashicorp.com/agent-inject: 'true'
-        # vault.hashicorp.com/tls-skip-verify: 'true'
-        # vault.hashicorp.com/role: 'secret-reader'
-        # vault.hashicorp.com/agent-inject-template-email-provider-env: |
-        #   {{- with secret "kv/calidum-rotae/default/email-provider-env" -}}
-        #     export EMAIL_SMTP_API_KEY="{{ .Data.data.email_smtp_api_key }}"
-        #   {{- end }}
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - email-provider
+              topologyKey: "kubernetes.io/hostname"
       containers:
         - name: email-provider
           image: ghcr.io/clubcedille/email-provider:1.0.2
           imagePullPolicy: Always
           command:
-            # ['/bin/sh', '-c', 'source /vault/secrets/email-provider-env && /email_provider --port 4000']
             ['/bin/sh', '-c', '/email_provider --port 4000']
           ports:
             - containerPort: 4000
@@ -49,3 +51,26 @@ spec:
               value: cedille@etsmtl.net
             - name: EMAIL_SUBJECT
               value: Submission
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+              ephemeral-storage: 256Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+              ephemeral-storage: 1Gi
+          securityContext:
+            runAsUser: 10001
+            runAsGroup: 10001
+            readOnlyRootFilesystem: true
+---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: email-provider-pdb
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: email-provider

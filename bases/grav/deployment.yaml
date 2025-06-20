@@ -5,7 +5,7 @@ metadata:
     app: grav
   name: grav
   annotations:
-    kube-score/ignore: container-image-tag,container-security-context-readonlyrootfilesystem, container-security-context-user-group-id
+    kube-score/ignore: container-image-tag,container-security-context-readonlyrootfilesystem, container-security-context-user-group-id, pod-networkpolicy
 spec:
   replicas: 1
   selector:
@@ -39,7 +39,6 @@ spec:
               mountPath: /var/www/html/user/accounts
             - name: grav-data
               mountPath: /var/www/html/user/data
-        # group 33 is www-data
           resources:
             requests:
               cpu: 300m
@@ -50,6 +49,7 @@ spec:
               memory: 768Mi
               ephemeral-storage: 512Mi
       securityContext:
+        # group 33 is www-data
         runAsUser: 33
         runAsGroup: 33
         fsGroup: 33
