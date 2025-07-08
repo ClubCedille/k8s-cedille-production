@@ -11,3 +11,17 @@ spec:
       protocol: TCP
       port: 80
   type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wiki-cedille-stg
+spec:
+  selector:
+    app: wiki-cedille-stg
+  ports:
+    - name: http
+      targetPort: 8080
+      protocol: TCP
+      port: 80
+  type: ClusterIP
