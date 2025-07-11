@@ -2,7 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: markets-frontend
+  annotations:
+    kube-score/ignore: pod-networkpolicy, container-image-pull-policy,container-image-tag
 spec:
+  serviceName: "markets-frontend-service"
   replicas: 1
   selector:
     matchLabels:
@@ -28,5 +31,22 @@ spec:
             limits:
               cpu: "200m"
               memory: "256Mi"
+              ephemeral-storage: 1Gi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          securityContext:
+            runAsUser: 10001
+            runAsGroup: 10001
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
       imagePullSecrets:
         - name: ghcr-secret

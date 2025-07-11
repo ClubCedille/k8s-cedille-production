@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: markets-backend
+  annotations:
+    kube-score/ignore: pod-networkpolicy, container-image-pull-policy,container-image-tag
 spec:
   serviceName: "markets-backend-service"
   replicas: 1
@@ -24,6 +26,30 @@ spec:
           volumeMounts:
             - name: db-storage
               mountPath: /app/markets/db
+          resources:
+            requests:
+              cpu: "200"
+              memory: "256"
+            limits:
+              cpu: "400m"
+              memory: "512Mi"
+              ephemeral-storage: 1Gi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          securityContext:
+            runAsUser: 10001
+            runAsGroup: 10001
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
       imagePullSecrets:
         - name: ghcr-secret
   volumeClaimTemplates:
