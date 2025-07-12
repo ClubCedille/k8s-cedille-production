@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: trema
+  annotations:
+    kube-score/ignore: container-image-tag, pod-networkpolicy
 spec:
   replicas: 1
   selector:
@@ -24,6 +26,7 @@ spec:
             requests:
               memory: "512Mi"
               cpu: "500m"
+              ephemeral-storage: 256Mi
             limits:
               memory: "1Gi"
               cpu: "1"

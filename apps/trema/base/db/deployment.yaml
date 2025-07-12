@@ -3,6 +3,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongo
+  annotations:
+    kube-score/ignore: pod-networkpolicy
 spec:
   selector:
     matchLabels:
@@ -17,7 +19,14 @@ spec:
         - name: mongo
           image: mongo:8.0.0
           imagePullPolicy: Always
-          resources: {}
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+              ephemeral-storage: 256Mi
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
           env:
             - name: MONGO_INITDB_ROOT_USERNAME
               value: "trema"

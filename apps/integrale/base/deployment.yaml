@@ -18,6 +18,12 @@ spec:
         - name: integrale-website
           image: ghcr.io/integrale-ets/site-integrale:latest
           imagePullPolicy: Always
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
           ports:
             - containerPort: 3000
           resources:
