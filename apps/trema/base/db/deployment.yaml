@@ -1,11 +1,12 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: mongo
   annotations:
     kube-score/ignore: pod-networkpolicy
 spec:
+  serviceName: mongo
   selector:
     matchLabels:
       app: mongo
