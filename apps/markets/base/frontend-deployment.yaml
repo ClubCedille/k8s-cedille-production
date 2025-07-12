@@ -48,5 +48,19 @@ spec:
                 - ALL
             seccompProfile:
               type: RuntimeDefault
+          volumeMounts:
+            - name: nginx-cache
+              mountPath: /var/cache/nginx
+            - name: nginx-temp
+              mountPath: /var/run
+            - name: nginx-log
+              mountPath: /var/log/nginx
+      volumes:
+        - name: nginx-cache
+          emptyDir: {}
+        - name: nginx-temp
+          emptyDir: {}
+        - name: nginx-log
+          emptyDir: {}
       imagePullSecrets:
         - name: ghcr-secret
