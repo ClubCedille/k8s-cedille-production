@@ -30,6 +30,7 @@ spec:
             limits:
               memory: "1Gi"
               cpu: "1"
+              ephemeral-storage: 1Gi
           ports:
             - containerPort: 6000
             - name: metrics
