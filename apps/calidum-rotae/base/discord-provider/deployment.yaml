@@ -38,14 +38,12 @@ spec:
               memory: 256Mi
               ephemeral-storage: 1Gi
           livenessProbe:
-            httpGet:
-              path: /health
+            tcpSocket:
               port: 5000
             initialDelaySeconds: 30
             periodSeconds: 10
           readinessProbe:
-            httpGet:
-              path: /health
+            tcpSocket:
               port: 5000
             initialDelaySeconds: 5
             periodSeconds: 10

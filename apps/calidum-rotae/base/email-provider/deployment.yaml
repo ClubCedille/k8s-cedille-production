@@ -51,6 +51,16 @@ spec:
               value: cedille@etsmtl.net
             - name: EMAIL_SUBJECT
               value: Submission
+          livenessProbe:
+            tcpSocket:
+              port: 4000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: 4000
+            initialDelaySeconds: 5
+            periodSeconds: 10
           resources:
             requests:
               cpu: 100m
