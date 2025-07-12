@@ -5,7 +5,6 @@ metadata:
   annotations:
     kube-score/ignore: pod-networkpolicy, container-image-pull-policy,container-image-tag
 spec:
-  serviceName: "markets-frontend-service"
   replicas: 1
   selector:
     matchLabels:
