@@ -39,9 +39,9 @@ spec:
               ephemeral-storage: 1Gi
           readinessProbe:
             httpGet:
-              path: /health
+              path: /
               port: 80
-            initialDelaySeconds: 5
+            initialDelaySeconds: 30
             periodSeconds: 10
           securityContext:
             allowPrivilegeEscalation: false

@@ -37,9 +37,9 @@ spec:
   tls:
     - secretName: wiki-stg-tls
       hosts:
-        - wiki.staging.cedille.club
+        - wiki.prod.cedille.club
   rules:
-    - host: wiki.staging.cedille.club
+    - host: wiki.prod.cedille.club
       http:
         paths:
           - pathType: Prefix
