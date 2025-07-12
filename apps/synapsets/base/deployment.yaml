@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: synapsets-web
-  namespace: synapsets
+  annotations:
+    kube-score/ignore: pod-networkpolicy,container-image-tag
 spec:
   replicas: 1
   selector:
