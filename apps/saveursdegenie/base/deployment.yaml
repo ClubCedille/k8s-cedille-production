@@ -18,6 +18,12 @@ spec:
         - name: saveursdegenie-web
           image: clubcedille/saveursdegenie.etsmtl.ca
           imagePullPolicy: Always
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
           resources:
             requests:
               memory: "128Mi"
