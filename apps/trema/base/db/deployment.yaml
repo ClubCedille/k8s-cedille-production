@@ -27,6 +27,7 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+              ephemeral-storage: 1Gi
           env:
             - name: MONGO_INITDB_ROOT_USERNAME
               value: "trema"

@@ -50,9 +50,19 @@ spec:
           readinessProbe:
             httpGet:
               path: /
-              port: 80
+              port: 8080
             initialDelaySeconds: 30
             periodSeconds: 10
+          volumeMounts:
+            - name: nginx-tmp
+              mountPath: /opt/bitnami/nginx/tmp
+            - name: run-volume
+              mountPath: /var/run
+      volumes:
+        - name: nginx-tmp
+          emptyDir: {}
+        - name: run-volume
+          emptyDir: {}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -106,6 +116,16 @@ spec:
           readinessProbe:
             httpGet:
               path: /
-              port: 80
+              port: 8080
             initialDelaySeconds: 30
             periodSeconds: 10
+          volumeMounts:
+            - name: nginx-tmp
+              mountPath: /opt/bitnami/nginx/tmp
+            - name: run-volume
+              mountPath: /var/run
+      volumes:
+        - name: nginx-tmp
+          emptyDir: {}
+        - name: run-volume
+          emptyDir: {}
