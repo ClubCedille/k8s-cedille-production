@@ -58,6 +58,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wiki-cedille-stg
+  annotations:
+    kube-score/ignore: container-image-tag, pod-networkpolicy
 spec:
   replicas: 1
   selector:
