@@ -65,7 +65,7 @@ spec:
             runAsGroup: 10001
             readOnlyRootFilesystem: true
 ---
-apiVersion: policy/v1beta1
+apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: email-provider-pdb

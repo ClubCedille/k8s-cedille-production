@@ -8,7 +8,12 @@ helmCharts:
     repo: https://charts.js.wiki
     valuesInline:
       image.tag: 2.5
+      imagePullPolicy: Always
       resources.limits:
+        cpu: 400m
+        memory: 512Mi
+        ephemeral-storage: 1Gi
+      resources.requests:
         cpu: 200m
         memory: 256Mi
       ingress.enabled: false
