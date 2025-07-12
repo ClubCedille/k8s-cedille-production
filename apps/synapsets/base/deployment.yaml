@@ -18,6 +18,13 @@ spec:
         - name: synapsets-web
           image: clubcedille/synapsets.etsmtl.ca
           imagePullPolicy: Always
-          resources: {}
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+              ephemeral-storage: 256Mi
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
           ports:
             - containerPort: 80
