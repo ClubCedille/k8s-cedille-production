@@ -53,6 +53,16 @@ spec:
               port: 80
             initialDelaySeconds: 30
             periodSeconds: 10
+          volumeMounts:
+            - name: nginx-tmp
+              mountPath: /opt/bitnami/nginx/tmp
+            - name: run-volume
+              mountPath: /var/run
+      volumes:
+        - name: nginx-tmp
+          emptyDir: {}
+        - name: run-volume
+          emptyDir: {}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -109,3 +119,13 @@ spec:
               port: 80
             initialDelaySeconds: 30
             periodSeconds: 10
+          volumeMounts:
+            - name: nginx-tmp
+              mountPath: /opt/bitnami/nginx/tmp
+            - name: run-volume
+              mountPath: /var/run
+      volumes:
+        - name: nginx-tmp
+          emptyDir: {}
+        - name: run-volume
+          emptyDir: {}
