@@ -12,8 +12,19 @@ spec:
     - secretName: ingenieuses-tls
       hosts:
         - ingenieuses.ca
+        - www.ingenieuses.ca
   rules:
     - host: ingenieuses.ca
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: ingenieuses-svc
+                port:
+                  number: 80
+    - host: www.ingenieuses.ca
       http:
         paths:
           - pathType: Prefix
