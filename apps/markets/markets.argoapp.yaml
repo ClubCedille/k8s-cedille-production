@@ -8,6 +8,8 @@ metadata:
     argocd-image-updater.argoproj.io/image-list: backend=ghcr.io/algoets/markets-backend:latest,frontend=ghcr.io/algoets/markets-frontend:latest
     argocd-image-updater.argoproj.io/backend.update-strategy: digest
     argocd-image-updater.argoproj.io/frontend.update-strategy: digest
+    argocd-image-updater.argoproj.io/backend.pull-secret: pullsecret:argocd/ghcr-markets-secret
+    argocd-image-updater.argoproj.io/frontend.pull-secret: pullsecret:argocd/ghcr-markets-secret
 spec:
   project: default
   destination:
