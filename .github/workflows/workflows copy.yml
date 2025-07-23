@@ -1,9 +1,9 @@
 name: test kube-score
 
 on:
-  push:
-    branches:
-      - test-kube
+  pull_request:
+    branches: [ test-kube ]
+
 
 jobs:
   test-ks:
