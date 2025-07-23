@@ -1,4 +1,4 @@
-name: test kube-score
+name: test kube-score2
 
 on:
   pull_request:
