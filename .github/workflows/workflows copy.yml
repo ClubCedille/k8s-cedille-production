@@ -1,0 +1,11 @@
+name: test kube-score
+
+on:
+  push:
+    branches:
+      - test-kube
+
+jobs:
+  test-ks:
+    uses:
+      clubcedille/cedille-workflows/.github/workflows/kube-score-validator.yml@test-new-kscore
