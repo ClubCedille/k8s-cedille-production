@@ -2,7 +2,9 @@ name: test kube-score
 
 on:
   pull_request:
-    branches: [ test-kube ]
+    types:
+      - opened
+      - synchronize
 
 
 jobs:
