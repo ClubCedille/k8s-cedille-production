@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mysql
-  kube-score/ignore: container-image-tag, pod-networkpolicy
 spec:
   serviceName: mysql
   replicas: 1
@@ -13,6 +12,8 @@ spec:
     metadata:
       labels:
         app: mysql
+      annotations:
+        kube-score/ignore: container-image-tag, pod-networkpolicy
     spec:
       imagePullSecrets:
         - name: ghcr-secret
