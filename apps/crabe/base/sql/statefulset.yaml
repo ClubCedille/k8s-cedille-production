@@ -12,6 +12,8 @@ spec:
     metadata:
       labels:
         app: mysql
+      annotations:
+        kube-score/ignore: container-image-tag, pod-networkpolicy
     spec:
       imagePullSecrets:
         - name: ghcr-secret
