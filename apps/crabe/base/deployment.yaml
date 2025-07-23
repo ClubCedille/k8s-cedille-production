@@ -81,12 +81,6 @@ spec:
               cpu: 500m
               memory: 256Mi
               ephemeral-storage: 1Gi
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 80
-            initialDelaySeconds: 30
-            periodSeconds: 10
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: false
@@ -98,3 +92,9 @@ spec:
                 - ALL
             seccompProfile:
               type: RuntimeDefault
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
