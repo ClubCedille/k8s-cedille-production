@@ -25,6 +25,8 @@ spec:
           volumeMounts:
             - name: logs-temp
               mountPath: /app/markets/logs
+            - name: migrations-temp
+              mountPath: /app/markets/trading_system/migrations
           resources:
             requests:
               cpu: "200m"
@@ -54,4 +56,6 @@ spec:
         - name: ghcr-secret
       volumes:
         - name: logs-temp
+          emptyDir: {}
+        - name: migrations-temp
           emptyDir: {}
