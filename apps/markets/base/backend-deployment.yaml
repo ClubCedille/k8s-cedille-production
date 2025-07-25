@@ -22,6 +22,9 @@ spec:
           envFrom:
             - secretRef:
                 name: markets-env-secret
+          volumeMounts:
+            - name: logs-temp
+              mountPath: /app/markets/logs
           resources:
             requests:
               cpu: "200m"
@@ -49,3 +52,6 @@ spec:
               type: RuntimeDefault
       imagePullSecrets:
         - name: ghcr-secret
+      volumes:
+        - name: logs-temp
+          emptyDir: {}
