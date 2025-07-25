@@ -1,11 +1,10 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: markets-backend
   annotations:
     kube-score/ignore: pod-networkpolicy, container-image-pull-policy,container-image-tag
 spec:
-  serviceName: "markets-backend-service"
   replicas: 1
   selector:
     matchLabels:
@@ -39,10 +38,10 @@ spec:
             timeoutSeconds: 2
             failureThreshold: 3
           securityContext:
-            # runAsUser: 10001 # needs changes to algoets dockerfile
-            # runAsGroup: 10001
-            # allowPrivilegeEscalation: false
-            # readOnlyRootFilesystem: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
             capabilities:
               drop:
                 - ALL
