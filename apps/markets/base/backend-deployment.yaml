@@ -23,9 +23,6 @@ spec:
           envFrom:
             - secretRef:
                 name: markets-env-secret
-          volumeMounts:
-            - name: db-storage
-              mountPath: /app/markets/db
           resources:
             requests:
               cpu: "200m"
@@ -53,12 +50,3 @@ spec:
               type: RuntimeDefault
       imagePullSecrets:
         - name: ghcr-secret
-  volumeClaimTemplates:
-    - metadata:
-        name: db-storage
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        storageClassName: cephfs
-        resources:
-          requests:
-            storage: "10Gi"
