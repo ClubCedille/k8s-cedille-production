@@ -29,11 +29,11 @@ spec:
               mountPath: /app/markets/trading_system/migrations
           resources:
             requests:
-              cpu: "200m"
-              memory: "256Mi"
-            limits:
               cpu: "400m"
               memory: "512Mi"
+            limits:
+              cpu: "800m"
+              memory: "1Gi"
               ephemeral-storage: 1Gi
           readinessProbe:
             tcpSocket:
