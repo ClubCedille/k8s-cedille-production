@@ -23,11 +23,11 @@ spec:
           envFrom:
             - secretRef:
                 name: markets-env-secret
-          volumeMounts:
-            - name: logs-temp
-              mountPath: /app/markets/logs
-            - name: migrations-temp
-              mountPath: /app/markets/trading_system/migrations
+          # volumeMounts:
+          #   - name: logs-temp
+          #     mountPath: /app/markets/logs
+          #   - name: migrations-temp
+          #     mountPath: /app/markets/trading_system/migrations
           resources:
             requests:
               cpu: "400m"
@@ -43,20 +43,20 @@ spec:
             periodSeconds: 10
             timeoutSeconds: 2
             failureThreshold: 3
-          securityContext:
-            runAsUser: 10001
-            runAsGroup: 10001
-            allowPrivilegeEscalation: true
-            readOnlyRootFilesystem: false
-            capabilities:
-              drop:
-                - ALL
-            seccompProfile:
-              type: RuntimeDefault
+          # securityContext:
+          #   runAsUser: 10001
+          #   runAsGroup: 10001
+          #   allowPrivilegeEscalation: true
+          #   readOnlyRootFilesystem: false
+          #   capabilities:
+          #     drop:
+          #       - ALL
+          #   seccompProfile:
+          #     type: RuntimeDefault
       imagePullSecrets:
         - name: ghcr-secret
-      volumes:
-        - name: logs-temp
-          emptyDir: {}
-        - name: migrations-temp
-          emptyDir: {}
+      # volumes:
+      #   - name: logs-temp
+      #     emptyDir: {}
+      #   - name: migrations-temp
+      #     emptyDir: {}
