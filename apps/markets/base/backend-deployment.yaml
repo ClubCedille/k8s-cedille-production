@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ghcr.io/algoets/markets-backend:commit-4a97a7e36cf6e7d033850d5a864759b88ddf34b2
+          image: ghcr.io/algoets/markets-backend:commit-35fd406a09df9d2727d1a0cbd9132b22fabe287d
           imagePullPolicy: Always
           ports:
             - containerPort: 8000

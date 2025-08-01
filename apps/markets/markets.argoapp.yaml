@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "2"
-    argocd-image-updater.argoproj.io/image-list: backend=ghcr.io/algoets/markets-backend:commit-4a97a7e36cf6e7d033850d5a864759b88ddf34b2,frontend=ghcr.io/algoets/markets-frontend:commit-4a97a7e36cf6e7d033850d5a864759b88ddf34b2
+    argocd-image-updater.argoproj.io/image-list: backend=ghcr.io/algoets/markets-backend:commit-35fd406a09df9d2727d1a0cbd9132b22fabe287d,frontend=ghcr.io/algoets/markets-frontend:commit-4a97a7e36cf6e7d033850d5a864759b88ddf34b2
     argocd-image-updater.argoproj.io/backend.update-strategy: digest
     argocd-image-updater.argoproj.io/frontend.update-strategy: digest
     argocd-image-updater.argoproj.io/backend.pull-secret: pullsecret:argocd/ghcr-markets-secret
