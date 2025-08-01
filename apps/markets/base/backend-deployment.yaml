@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: ghcr.io/algoets/markets-backend:jlopez/hotfix
+          image: ghcr.io/algoets/markets-backend:commit-4a97a7e36cf6e7d033850d5a864759b88ddf34b2
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
