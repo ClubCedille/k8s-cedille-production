@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ghcr.io/algoets/markets-frontend:latest
+          image: ghcr.io/algoets/markets-frontend:jlopez/hotfix
           ports:
             - containerPort: 80
           envFrom:
