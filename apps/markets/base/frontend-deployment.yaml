@@ -25,11 +25,11 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              cpu: "100m"
-              memory: "128Mi"
+              cpu: "400m"
+              memory: "512Mi"
             limits:
-              cpu: "200m"
-              memory: "256Mi"
+              cpu: "800m"
+              memory: "1Gi"
               ephemeral-storage: 1Gi
           readinessProbe:
             httpGet:
