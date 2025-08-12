@@ -60,3 +60,37 @@ spec:
       #     emptyDir: {}
       #   - name: migrations-temp
       #     emptyDir: {}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: markets-scheduler
+  annotations:
+    kube-score/ignore: pod-networkpolicy, container-image-pull-policy,container-image-tag
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: markets-scheduler
+  template:
+    metadata:
+      labels:
+        app: markets-scheduler
+    spec:
+      containers:
+        - name: scheduler
+          image: ghcr.io/algoets/markets-scheduler:latest
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: markets-env-secret
+          resources:
+            requests:
+              cpu: "300m"
+              memory: "512Mi"
+            limits:
+              cpu: "600m"
+              memory: "800Mi"
+              ephemeral-storage: 1Gi
+      imagePullSecrets:
+        - name: ghcr-secret
