@@ -6,11 +6,11 @@ metadata:
 spec:
   destination:
     namespace: kubero-operator-system
-    server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-shared
-  project: k8s-shared
+    server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-production
+  project: default
   source:
     path: apps/kubero-operator/
-    repoURL: https://github.com/ClubCedille/k8s-shared.git
+    repoURL: https://github.com/ClubCedille/k8s-cedille-production
     targetRevision: HEAD
   syncPolicy:
     automated:

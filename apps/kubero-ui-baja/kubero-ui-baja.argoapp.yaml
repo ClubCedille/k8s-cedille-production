@@ -7,7 +7,7 @@ spec:
   destination:
     namespace: kubero-ui-baja
     server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-production
-  project: k8s-shared
+  project: default
   source:
     path: apps/kubero-ui-baja/prod
     repoURL: https://github.com/ClubCedille/k8s-cedille-production
