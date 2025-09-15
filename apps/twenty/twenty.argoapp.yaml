@@ -6,10 +6,10 @@ metadata:
 spec:
   project: default
   destination:
-    server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-production
+    server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-production-v2
     namespace: twenty
   source:
-    repoURL: https://github.com/ClubCedille/k8s-cedille-production
+    repoURL: https://github.com/ClubCedille/k8s-cedille-production-v2
     path: apps/twenty
     targetRevision: HEAD
   syncPolicy:
