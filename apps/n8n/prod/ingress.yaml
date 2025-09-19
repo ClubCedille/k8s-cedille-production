@@ -4,8 +4,6 @@ metadata:
   name: n8n
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-etsmtl
-    #ingress.kubernetes.io/force-ssl-redirect: "true"
-    #kubernetes.io/tls-acme: "true"
 spec:
   ingressClassName: contour
   tls:
