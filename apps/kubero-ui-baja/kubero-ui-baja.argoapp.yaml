@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubero-ui-baja
+  namespace: argocd
+spec:
+  destination:
+    namespace: kubero-ui-baja
+    server: https://cedille.kubernetes.omni.siderolabs.io?cluster=k8s-cedille-production
+  project: default
+  source:
+    path: apps/kubero-ui-baja/prod
+    repoURL: https://github.com/ClubCedille/k8s-cedille-production
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
