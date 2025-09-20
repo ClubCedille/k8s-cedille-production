@@ -22,13 +22,21 @@ spec:
       containers:
         - image: postgres:11
           name: postgres
+          imagePullPolicy: Always
           resources:
-            limits:
-              cpu: "4"
-              memory: 4Gi
             requests:
-              cpu: "1"
-              memory: 2Gi
+              cpu: 10m
+              memory: 16Mi
+              ephemeral-storage: 32Mi
+            limits:
+              cpu: 50m
+              memory: 64Mi
+              ephemeral-storage: 128Mi
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
           ports:
             - containerPort: 5432
           volumeMounts:
@@ -37,6 +45,12 @@ spec:
             - name: init-data
               mountPath: /docker-entrypoint-initdb.d/init-n8n-user.sh
               subPath: init-data.sh
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 5678
+            initialDelaySeconds: 10
+            periodSeconds: 10
           env:
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
