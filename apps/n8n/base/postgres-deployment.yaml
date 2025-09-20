@@ -1,7 +1,5 @@
 apiVersion: apps/v1
 kind: Deployment
-annotations:
-    kube-score/ignore: pod-networkpolicy
 metadata:
   labels:
     service: postgres-n8n
