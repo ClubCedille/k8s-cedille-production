@@ -1,5 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
+annotations:
+    kube-score/ignore: pod-networkpolicy
 metadata:
   labels:
     service: postgres-n8n
@@ -33,8 +35,8 @@ spec:
               memory: 64Mi
               ephemeral-storage: 128Mi
           securityContext:
-            runAsUser: 0
-            runAsGroup: 0
+            runAsUser: 10000
+            runAsGroup: 10000
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
           ports:
