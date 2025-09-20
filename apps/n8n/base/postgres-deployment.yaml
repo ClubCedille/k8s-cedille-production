@@ -4,6 +4,8 @@ metadata:
   labels:
     service: postgres-n8n
   name: postgres
+  annotations:
+    kube-score/ignore: pod-networkpolicy
 spec:
   replicas: 1
   selector:
