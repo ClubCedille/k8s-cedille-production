@@ -110,18 +110,3 @@ spec:
         - name: postgres-secret
           secret:
             secretName: postgres-secret
----
-apiVersion: networking.k8s.io/v1
-kind: NetworkPolicy
-metadata:
-  name: allow-n8n
-  namespace: n8n
-spec:
-  podSelector:
-    matchLabels:
-      service: n8n
-  policyTypes:
-    - Ingress
-  ingress:
-    - from:
-        - podSelector: {}
