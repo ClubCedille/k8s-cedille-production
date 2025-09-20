@@ -31,8 +31,8 @@ spec:
               memory: 64Mi
               ephemeral-storage: 128Mi
           securityContext:
-            runAsUser: 0
-            runAsGroup: 0
+            runAsUser: 10
+            runAsGroup: 10
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
           volumeMounts:
